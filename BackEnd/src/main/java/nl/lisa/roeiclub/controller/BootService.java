@@ -18,4 +18,12 @@ public class BootService {
         br.save(boot);
     }
 
+    public Iterable<Boot> botenInzien() {
+        Iterable<Boot> botenOverzicht = br.findAll();
+        for (Boot b : botenOverzicht) {
+            System.out.println("in botenInzien in BootService: " + b.getNaam());
+        }
+        return botenOverzicht;
+    }
+
 }
