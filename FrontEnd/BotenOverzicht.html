@@ -8,7 +8,7 @@
         </script>
     </head>
     <body>
-        <section id="bootToevoegen">
+        <section id="sectionBootToevoegen">
             <input id="invoerNaam" value="naam" type="text">
             <input id="invoerType" value="type" type="text">
             <label id="labelBeschikbaar">Beschikbaar: </label>
@@ -30,8 +30,30 @@
 
             <input id="buttonBootToevoegen" type="button" value="Boot toevoegen" onclick="bootToevoegen()">
         </section>
-
-
+        <br><hr><br>
+        <section id="sectionBotenInzien">
+            <input type="button" id="buttonBootInzien" value="boten inzien" onclick="botenInzien()"> <br>
+            
+            <div id="testBotenInzien"></div>
+            
+            <table id="tabelBotenInzien"> 
+                <th> id </th>
+                <th> naam </th>
+                <th> type </th>
+            </table>
+            <!--
+            <table id="tabelBootInzien">
+                <tr>
+                    <th>kolom 1 head</th>
+                    <th>kolom 2 head</th>
+                </tr>
+                <tr>
+                    <td>kolom 1 rij 2</td>
+                    <td>kolom 2 rij 2</td>
+                </tr>
+            </table>
+            -->
+        </section> 
 
     </body>
 </html>
