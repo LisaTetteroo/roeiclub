@@ -22,17 +22,14 @@ function bootToevoegen(){
 }
 
 function botenInzien () {
-    //alert("test button boten inzien")   
+    //alert("test button boten inzien")
+    var tabel = document.getElementById("tabelBotenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");
     while (1 < rijenAanwezig.length) {
         tabel.deleteRow(-1)
     }
 
     var xhr = new XMLHttpRequest();
-    var tabel = document.getElementById("tabelBotenInzien");
-    
-    
-
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             var boot = JSON.parse(this.responseText);
@@ -55,25 +52,31 @@ function botenInzien () {
                 celPalenId.innerHTML = boot[i].palenId;
                 var celAanvullendeInformatie = rij.insertCell();
                 celAanvullendeInformatie.innerHTML = boot[i].aanvullendeInformatie;                    
+                
                 var celVerwijderBoot = rij.insertCell();
                 
-                //celVerwijderBoot.innerHTML = "<button id=buttonVerwijderBoot onclick=verwijderBoot()> Verwijder Boot </button>"
-                
                 var ButtonVerwijderBoot = document.createElement("button");
-                var addButtonVerwijderBoot= celVerwijderBoot.appendChild(ButtonVerwijderBoot);
-                ButtonVerwijderBoot.setAttribute = ("id", "buttonVerwijderBoot");
+                 
+                ButtonVerwijderBoot.value = i;
                 ButtonVerwijderBoot.innerHTML = "verwijder boot";
-                
+                ButtonVerwijderBoot.onclick = function () {
+                    verwijderBoot(boot[i].id);
+                } 
+                console.log(ButtonVerwijderBoot.value);
+                var addButtonVerwijderBoot= celVerwijderBoot.appendChild(ButtonVerwijderBoot);
             }
         }  
     }
     xhr.open("GET", "http://localhost:8082/botenInzien", true);
-    xhr.send();
-    document.getElementById(ButtonVerwijderBoot).onclick = verwijderBoot(tabel.rowIndex);
-
-        
+    xhr.send();        
 }
 
-function verwijderBoot (id) {
-    console.log("test verwijder boot button, boot: " + id);
+function createButton (i) {
+    var buttonVerwijderBoot = document.createElement("button");
+    buttonVerwijderBoot.value = i;
+}
+
+function verwijderBoot (n) {
+    var tabel = document.getElementById("tabelBotenInzien");
+    console.log("test verwijder boot button" + n);
 }
