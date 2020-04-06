@@ -20,10 +20,15 @@ public class BootService {
 
     public Iterable<Boot> botenInzien() {
         Iterable<Boot> botenOverzicht = br.findAll();
-        for (Boot b : botenOverzicht) {
-            System.out.println("in botenInzien in BootService: " + b.getNaam());
+        for (Boot boot : botenOverzicht) {
+            System.out.println("in botenInzien in BootService: " + boot.getNaam());
         }
         return botenOverzicht;
+    }
+
+    public void bootVerwijderen(Long id, Boot boot) {
+        System.out.println("in bootVerwijderen in BootService: " + boot.getNaam());
+        br.deleteById(id);
     }
 
 }

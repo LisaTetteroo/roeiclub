@@ -22,17 +22,14 @@ function bootToevoegen(){
 }
 
 function botenInzien () {
-    //alert("test button boten inzien")   
+    //alert("test button boten inzien")
+    var tabel = document.getElementById("tabelBotenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");
     while (1 < rijenAanwezig.length) {
         tabel.deleteRow(-1)
     }
 
     var xhr = new XMLHttpRequest();
-    var tabel = document.getElementById("tabelBotenInzien");
-    
-    
-
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             var boot = JSON.parse(this.responseText);
@@ -56,24 +53,78 @@ function botenInzien () {
                 var celAanvullendeInformatie = rij.insertCell();
                 celAanvullendeInformatie.innerHTML = boot[i].aanvullendeInformatie;                    
                 var celVerwijderBoot = rij.insertCell();
-                
-                //celVerwijderBoot.innerHTML = "<button id=buttonVerwijderBoot onclick=verwijderBoot()> Verwijder Boot </button>"
-                
-                var ButtonVerwijderBoot = document.createElement("button");
-                var addButtonVerwijderBoot= celVerwijderBoot.appendChild(ButtonVerwijderBoot);
-                ButtonVerwijderBoot.setAttribute = ("id", "buttonVerwijderBoot");
-                ButtonVerwijderBoot.innerHTML = "verwijder boot";
+                createButtonVerwijder(boot[i].id, boot[i].naam, celVerwijderBoot);
+                var celUpdateBoot = rij.insertCell();
+                createButtonUpdate(boot[i].id, celUpdateBoot);
                 
             }
         }  
     }
     xhr.open("GET", "http://localhost:8082/botenInzien", true);
-    xhr.send();
-    document.getElementById(ButtonVerwijderBoot).onclick = verwijderBoot(tabel.rowIndex);
-
-        
+    xhr.send();        
 }
 
-function verwijderBoot (id) {
-    console.log("test verwijder boot button, boot: " + id);
+function createButtonVerwijder (id, naam, cel) {
+    var buttonVerwijderBoot = document.createElement("button");
+    buttonVerwijderBoot.id =  id;
+    buttonVerwijderBoot.innerHTML = "verwijder boot";
+    buttonVerwijderBoot.onclick = function () {
+        verwijderBoot(id, naam);
+    }
+    cel.appendChild(buttonVerwijderBoot);
+
+}
+
+function createButtonUpdate (id, cel) {
+    var buttonUpdateBoot = document.createElement("button");
+    buttonUpdateBoot.id =  id;
+    buttonUpdateBoot.innerHTML = "gegevens aanpassen";
+    buttonUpdateBoot.onclick = function () {
+        bootUpdatenVullen(id);
+    }
+    cel.appendChild(buttonUpdateBoot);
+}
+
+
+function verwijderBoot (bootId, bootNaam) {
+    //console.log("test verwijder boot button " + bootId);
+    if (confirm("Weet je zeker dat je de " + bootNaam + " wil verijderen? Dit kan niet ongedaan gemaakt!")) {
+            if (confirm("Sorry, dubbelcheck: Weet je zeker dat je de " + bootNaam + " wil verijderen? Dit kan niet ongedaan gemaakt!")) {
+            var boot = {};
+            boot.id = bootId;
+            var bootJSON = JSON.stringify(boot);
+            
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                console.log(this.responseText);
+            }
+            xhr.open("DELETE", "http://localhost:8082/bootVerwijderen", true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(bootJSON);
+        }
+    }
+}
+
+
+
+function bootUpdatenVullen (bootId) {
+    console.log("test button update vullen" + bootId)
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            var boot = JSON.parse(this.responseText);
+            for (var i = 0 ; i < boot.length ; i++) {
+                if (boot[i].id == bootId) {
+                    console.log(boot[i].naam);
+                    document.getElementById("invoerUpdateNaam").value = boot[i].naam;
+                    // TO DO: deze lijst verder afmaken en button bootUpdaten functie geven
+                }
+            }
+
+        } 
+    }
+    xhr.open("GET", "http://localhost:8082/botenInzien", true);
+    xhr.send(); 
+
 }

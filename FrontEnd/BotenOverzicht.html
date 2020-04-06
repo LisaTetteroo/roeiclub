@@ -30,7 +30,9 @@
 
             <input id="buttonBootToevoegen" type="button" value="Boot toevoegen" onclick="bootToevoegen()">
         </section>
+
         <br><hr><br>
+
         <section id="sectionBotenInzien">
             <input type="button" id="buttonBootInzien" value="boten inzien" onclick="botenInzien()"> <br>
             
@@ -45,9 +47,37 @@
                 <th> loods </th>
                 <th> bijhoorende palen </th>
                 <th> aanvullende informatie </th>
+                <th> gegevens updaten </th>
                 <th> boot verwijderen </th>
             </table>
         </section> 
+
+        <br><hr><br>
+
+        <section id=sectionBootUpdaten>
+            
+            <input id="invoerUpdateNaam" value="naam" type="text">
+            <input id="invoerUpdateType" value="type" type="text">
+            <label id="labelUpdateBeschikbaar">Beschikbaar: </label>
+            <input id="invoerUpdateBeschikbaar" type="checkbox">
+            <label id="labelUpdateLoodsNummer">Loodsnummer: </label>
+            <input id="invoerUpdateLoodsNummer" value="0" type="number" min=0 max=5>
+            <label id="labelUpdatePalenId">Palen ID: </label>
+            <input id="invoerUpdatePalenId" value="0" type="number" min="0" max="1000">
+            <textarea id="invoerUpdateAanvullendeInformatie" value="Aanvullende informatie" type="text"></textarea>
+            
+            <div id=invoerUpdateGebruikType> 
+                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="compo" checked>
+                <label for="compo">competitieboot</label><br>
+                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="wedstro">
+                <label for="wedstro">wedstrijdboot</label><br>
+                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="prive">
+                <label for="prive">prive</label>
+            </div>
+
+            <input id="buttonBootUpdaten" type="button" value="Boot gegevens updaten" onclick="bootUpdaten()">
+            
+        </section>
 
     </body>
 </html>
