@@ -22,43 +22,58 @@ function bootToevoegen(){
 }
 
 function botenInzien () {
-    //alert("test button boten inzien")
+    //alert("test button boten inzien")   
+    var rijenAanwezig = document.getElementsByTagName("tr");
+    while (1 < rijenAanwezig.length) {
+        tabel.deleteRow(-1)
+    }
+
     var xhr = new XMLHttpRequest();
+    var tabel = document.getElementById("tabelBotenInzien");
+    
+    
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            var BootUitDatabase = JSON.parse(this.responseText);
-            for (var i = 0 ; i < BootUitDatabase.length ; i++) {
-                document.getElementById("testBotenInzien").innerHTML += BootUitDatabase[i].naam + "<br>";
+            var boot = JSON.parse(this.responseText);
+            for (var i = 0 ; i < boot.length ; i++) {
+                //document.getElementById("testBotenInzien").innerHTML += boot[i].naam + "<br>";
+                var rij = tabel.appendChild(tabel.insertRow());
+                var celId = rij.insertCell(0);
+                celId.innerHTML = boot[i].id;
+                var celNaam = rij.insertCell();
+                celNaam.innerHTML = boot[i].naam;
+                var celType = rij.insertCell();
+                celType.innerHTML = boot[i].type;
+                var celBeschikbaar = rij.insertCell();
+                celBeschikbaar.innerHTML = boot[i].beschikbaar;
+                var celGebruikType = rij.insertCell();
+                celGebruikType.innerHTML = boot[i].gebruikType;
+                var celLoodsNummer = rij.insertCell();
+                celLoodsNummer.innerHTML = boot[i].loodsNummer;
+                var celPalenId = rij.insertCell();
+                celPalenId.innerHTML = boot[i].palenId;
+                var celAanvullendeInformatie = rij.insertCell();
+                celAanvullendeInformatie.innerHTML = boot[i].aanvullendeInformatie;                    
+                var celVerwijderBoot = rij.insertCell();
+                
+                //celVerwijderBoot.innerHTML = "<button id=buttonVerwijderBoot onclick=verwijderBoot()> Verwijder Boot </button>"
+                
+                var ButtonVerwijderBoot = document.createElement("button");
+                var addButtonVerwijderBoot= celVerwijderBoot.appendChild(ButtonVerwijderBoot);
+                ButtonVerwijderBoot.setAttribute = ("id", "buttonVerwijderBoot");
+                ButtonVerwijderBoot.innerHTML = "verwijder boot";
+                
             }
         }  
     }
     xhr.open("GET", "http://localhost:8082/botenInzien", true);
     xhr.send();
+    document.getElementById(ButtonVerwijderBoot).onclick = verwijderBoot(tabel.rowIndex);
 
-
-    /*
-    var tabel = document.getElementById("tabelBotenInzien");
-    var rij = tabel.appendChild(tabel.insertRow());
-    var cel1 = rij.insertCell(0);
-    var cel2 = rij.insertCell(1);
-    var cel3 = rij.insertCell(2);
-    */
+        
 }
 
-/*
-    var veldnamen = tabel.createTHead();
-    var veldnamenRij = veldnamen.insertRow(0);
-    var veldnamenCel1 = veldnamenRij.insertCell(0);
-    var veldnamenCel2 = veldnamenRij.insertCell();
-    veldnamenCel1.innerHTML = "<b> cel 1 header </b>"
-    veldnamenCel2.innerHTML = "<b> cel 2 header </b>"
-*/
-
-
-/*
-    if (document.getElementById("invoerBeschikbaar").checked == true) {
-        bootObject.beschikbaar = true;
-    } else {
-        bootObject.beschikbaar =false;
-    }
-*/
+function verwijderBoot (id) {
+    console.log("test verwijder boot button, boot: " + id);
+}
