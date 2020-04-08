@@ -1,11 +1,27 @@
 function bootToevoegen(){
     var bootObject = {};
+    var palenObject = {};
+    bootObject.id = document.getElementById("bootId").value;
     bootObject.naam = document.getElementById("invoerNaam").value;
     bootObject.type = document.getElementById("invoerType").value;
     bootObject.beschikbaar = document.getElementById("invoerBeschikbaar").checked;   
     bootObject.gebruikType = document.querySelector('input[name = gebruikType]:checked').value;
     bootObject.loodsNummer = document.getElementById("invoerLoodsNummer").value;
-    bootObject.palenId = document.getElementById("invoerPalenId").value;
+    //var paalid = palenObject.id = document.getElementById("invoerPalen").value;
+    //bootObject.palen = paalid
+    
+    /*
+    TO DO: idiot proof maken als er geen paal is ingevuld
+    als paal = 0 dan wordt nieuwe paal aangemaakt, als ander getal, dan moet id bestaan, anders kan boot niet aangemaakt worden. 
+
+    if (document.getElementById("invoerPalen").value == null) {
+        bootObject.palen = '0';
+    } else {
+        bootObject.palen = document.getElementById("invoerPalen").value;
+    }
+    */
+   
+    bootObject.palen = document.getElementById("invoerPalen").value;
     bootObject.aanvullendeInformatie = document.getElementById("invoerAanvullendeInformatie").value;
 
     var bootJSON = JSON.stringify(bootObject);
@@ -16,6 +32,7 @@ function bootToevoegen(){
     xhr.onreadystatechange = function() {
         console.log(this.responseText);
     }
+
     xhr.open("POST", "http://localhost:8082/bootToevoegen", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(bootJSON);
@@ -33,6 +50,7 @@ function botenInzien () {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             var boot = JSON.parse(this.responseText);
+            console.log(boot);
             for (var i = 0 ; i < boot.length ; i++) {
                 //document.getElementById("testBotenInzien").innerHTML += boot[i].naam + "<br>";
                 var rij = tabel.appendChild(tabel.insertRow());
@@ -49,7 +67,8 @@ function botenInzien () {
                 var celLoodsNummer = rij.insertCell();
                 celLoodsNummer.innerHTML = boot[i].loodsNummer;
                 var celPalenId = rij.insertCell();
-                celPalenId.innerHTML = boot[i].palenId;
+                console.log(boot[i].palen)
+                celPalenId.innerHTML = boot[i].palen.id;
                 var celAanvullendeInformatie = rij.insertCell();
                 celAanvullendeInformatie.innerHTML = boot[i].aanvullendeInformatie;                    
                 var celVerwijderBoot = rij.insertCell();
@@ -116,9 +135,25 @@ function bootUpdatenVullen (bootId) {
             var boot = JSON.parse(this.responseText);
             for (var i = 0 ; i < boot.length ; i++) {
                 if (boot[i].id == bootId) {
+                    document.getElementById("bootId").value = boot[i].id;
                     console.log(boot[i].naam);
-                    document.getElementById("invoerUpdateNaam").value = boot[i].naam;
-                    // TO DO: deze lijst verder afmaken en button bootUpdaten functie geven
+                    document.getElementById("invoerNaam").value = boot[i].naam;
+                    document.getElementById("invoerType").value = boot[i].type;
+                    //beschikbaar
+                    document.getElementById("invoerBeschikbaar").checked = boot[i].beschikbaar;
+                    document.getElementById("invoerLoodsNummer").value = boot[i].loodsNummer;
+                    //document.getElementById("invoerPalenId").value = boot[i].palenId;
+                    document.getElementById("invoerAanvullendeInformatie").value = boot[i].aanvullendeInformatie;
+                    if (boot[i].gebruikType === "compo") {
+                        document.getElementById("gebruikTypeCompo").checked = true;
+                    } else if (boot[i].gebruikType === "wedstro") {
+                        document.getElementById("gebruikTypeWedstro").checked = true;
+                    } else if (boot[i].gebruikType === "prive") {
+                        document.getElementById("gebruikTypePrive").checked = true;
+                    }
+                    
+                    
+                    // TO DO: button bootUpdaten functie geven
                 }
             }
 
@@ -127,4 +162,28 @@ function bootUpdatenVullen (bootId) {
     xhr.open("GET", "http://localhost:8082/botenInzien", true);
     xhr.send(); 
 
+}
+
+function bootUpdaten() {
+        var bootObject = {};
+        bootObject.id = document.getElementById("bootId").value;
+        bootObject.naam = document.getElementById("invoerUpdateNaam").value;
+        bootObject.type = document.getElementById("invoerType").value;
+        bootObject.beschikbaar = document.getElementById("invoerBeschikbaar").checked;   
+        bootObject.gebruikType = document.querySelector('input[name = gebruikType]:checked').value;
+        bootObject.loodsNummer = document.getElementById("invoerLoodsNummer").value;
+        //bootObject.palenId = document.getElementById("invoerPalenId").value;
+        bootObject.aanvullendeInformatie = document.getElementById("invoerAanvullendeInformatie").value;
+    
+        var bootJSON = JSON.stringify(bootObject);
+        console.log(bootObject);
+        console.log(bootJSON);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            console.log(this.responseText);
+        }
+        xhr.open("POST", "http://localhost:8082/bootToevoegen", true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send(bootJSON);    
 }

@@ -1,9 +1,6 @@
 package nl.lisa.roeiclub.domein;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Boot {
@@ -17,11 +14,13 @@ public class Boot {
     private boolean beschikbaar;
     private String gebruikType;
     private int loodsNummer;
-    private int palenId;
     private boolean stuurtje;
     private boolean losRoer;
     private boolean losBankje;
     private String aanvullendeInformatie;
+
+    @ManyToOne
+    private Palen palen;
 
     public long getId() {
         return id;
@@ -67,14 +66,6 @@ public class Boot {
         this.loodsNummer = loodsNummer;
     }
 
-    public int getPalenId() {
-        return palenId;
-    }
-
-    public void setPalenId(int palenId) {
-        this.palenId = palenId;
-    }
-
     public boolean isStuurtje() {
         return stuurtje;
     }
@@ -105,5 +96,13 @@ public class Boot {
 
     public void setAanvullendeInformatie(String aanvullendeInformatie) {
         this.aanvullendeInformatie = aanvullendeInformatie;
+    }
+
+    public Palen getPalen() {
+        return palen;
+    }
+
+    public void setPalen(Palen palen) {
+        this.palen = palen;
     }
 }

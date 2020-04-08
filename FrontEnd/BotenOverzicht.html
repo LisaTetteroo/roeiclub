@@ -9,22 +9,23 @@
     </head>
     <body>
         <section id="sectionBootToevoegen">
+            <input id="bootId" type="text" disabled>
             <input id="invoerNaam" value="naam" type="text">
             <input id="invoerType" value="type" type="text">
             <label id="labelBeschikbaar">Beschikbaar: </label>
             <input id="invoerBeschikbaar" type="checkbox">
             <label id="labelLoodsNummer">Loodsnummer: </label>
             <input id="invoerLoodsNummer" value="0" type="number" min=0 max=5>
-            <label id="labelPalenId">Palen ID: </label>
-            <input id="invoerPalenId" value="0" type="number" min="0" max="1000">
+            <label id="labelPalenId">Palen: </label>
+            <input id="invoerPalen" value="0" type="text">
             <textarea id="invoerAanvullendeInformatie" value="Aanvullende informatie" type="text"></textarea>
             
             <div id=invoerGebruikType> 
-                <input type="radio" id="gebruikType" name="gebruikType" value="compo" checked>
+                <input type="radio" id="gebruikTypeCompo" name="gebruikType" value="compo" checked>
                 <label for="compo">competitieboot</label><br>
-                <input type="radio" id="gebruikType" name="gebruikType" value="wedstro">
+                <input type="radio" id="gebruikTypeWedstro" name="gebruikType" value="wedstro">
                 <label for="wedstro">wedstrijdboot</label><br>
-                <input type="radio" id="gebruikType" name="gebruikType" value="prive">
+                <input type="radio" id="gebruikTypePrive" name="gebruikType" value="prive">
                 <label for="prive">prive</label>
             </div>
 
@@ -55,7 +56,7 @@
         <br><hr><br>
 
         <section id=sectionBootUpdaten>
-            
+            <input id="UpdateBootId" type="text" value="id" disabled>
             <input id="invoerUpdateNaam" value="naam" type="text">
             <input id="invoerUpdateType" value="type" type="text">
             <label id="labelUpdateBeschikbaar">Beschikbaar: </label>
@@ -67,11 +68,11 @@
             <textarea id="invoerUpdateAanvullendeInformatie" value="Aanvullende informatie" type="text"></textarea>
             
             <div id=invoerUpdateGebruikType> 
-                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="compo" checked>
+                <input type="radio" id="gebruikTypeUpdateCompo" name="gebruikTypeUpdate" value="compo" checked>
                 <label for="compo">competitieboot</label><br>
-                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="wedstro">
+                <input type="radio" id="gebruikTypeUpdateWedstro" name="gebruikTypeUpdate" value="wedstro">
                 <label for="wedstro">wedstrijdboot</label><br>
-                <input type="radio" id="gebruikTypeUpdate" name="gebruikType" value="prive">
+                <input type="radio" id="gebruikTypeUpdatePrive" name="gebruikTypeUpdate" value="prive">
                 <label for="prive">prive</label>
             </div>
 
