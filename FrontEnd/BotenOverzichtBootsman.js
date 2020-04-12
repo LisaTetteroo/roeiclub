@@ -1,26 +1,11 @@
 function bootToevoegen(){
     var bootObject = {};
-    var palenObject = {};
     bootObject.id = document.getElementById("bootId").value;
     bootObject.naam = document.getElementById("invoerNaam").value;
     bootObject.type = document.getElementById("invoerType").value;
     bootObject.beschikbaar = document.getElementById("invoerBeschikbaar").checked;   
     bootObject.gebruikType = document.querySelector('input[name = gebruikType]:checked').value;
-    bootObject.loodsNummer = document.getElementById("invoerLoodsNummer").value;
-    //var paalid = palenObject.id = document.getElementById("invoerPalen").value;
-    //bootObject.palen = paalid
-    
-    /*
-    TO DO: idiot proof maken als er geen paal is ingevuld
-    als paal = 0 dan wordt nieuwe paal aangemaakt, als ander getal, dan moet id bestaan, anders kan boot niet aangemaakt worden. 
-
-    if (document.getElementById("invoerPalen").value == null) {
-        bootObject.palen = '0';
-    } else {
-        bootObject.palen = document.getElementById("invoerPalen").value;
-    }
-    */
-   
+    bootObject.loodsNummer = document.getElementById("invoerLoodsNummer").value;     
     bootObject.palen = document.getElementById("invoerPalen").value;
     bootObject.aanvullendeInformatie = document.getElementById("invoerAanvullendeInformatie").value;
 
@@ -31,11 +16,17 @@ function bootToevoegen(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         console.log(this.responseText);
+        document.getElementById("toevoegMessageBoot").innerHTML = this.responseText;
+        if (this.readyState == 4) {
+            botenInzien();
+        }
     }
 
     xhr.open("POST", "http://localhost:8082/bootToevoegen", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(bootJSON);
+
+    
 }
 
 function botenInzien () {
@@ -85,7 +76,7 @@ function botenInzien () {
 
 function createButtonVerwijder (id, naam, cel) {
     var buttonVerwijderBoot = document.createElement("button");
-    buttonVerwijderBoot.id =  id;
+    buttonVerwijderBoot.id = id;
     buttonVerwijderBoot.innerHTML = "verwijder boot";
     buttonVerwijderBoot.onclick = function () {
         verwijderBoot(id, naam);
@@ -96,7 +87,7 @@ function createButtonVerwijder (id, naam, cel) {
 
 function createButtonUpdate (id, cel) {
     var buttonUpdateBoot = document.createElement("button");
-    buttonUpdateBoot.id =  id;
+    buttonUpdateBoot.id = id;
     buttonUpdateBoot.innerHTML = "gegevens aanpassen";
     buttonUpdateBoot.onclick = function () {
         bootUpdatenVullen(id);
@@ -135,14 +126,14 @@ function bootUpdatenVullen (bootId) {
             var boot = JSON.parse(this.responseText);
             for (var i = 0 ; i < boot.length ; i++) {
                 if (boot[i].id == bootId) {
+                    //console.log(boot[i]);
                     document.getElementById("bootId").value = boot[i].id;
                     console.log(boot[i].naam);
                     document.getElementById("invoerNaam").value = boot[i].naam;
                     document.getElementById("invoerType").value = boot[i].type;
-                    //beschikbaar
                     document.getElementById("invoerBeschikbaar").checked = boot[i].beschikbaar;
                     document.getElementById("invoerLoodsNummer").value = boot[i].loodsNummer;
-                    //document.getElementById("invoerPalenId").value = boot[i].palenId;
+                    document.getElementById("invoerPalen").value = boot[i].palen.id;
                     document.getElementById("invoerAanvullendeInformatie").value = boot[i].aanvullendeInformatie;
                     if (boot[i].gebruikType === "compo") {
                         document.getElementById("gebruikTypeCompo").checked = true;

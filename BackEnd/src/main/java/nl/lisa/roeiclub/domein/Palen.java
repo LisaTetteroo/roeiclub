@@ -10,16 +10,11 @@ public class Palen {
     public Palen() {
     }
 
+
+
     public Palen(String id) {
         this.id = Long.parseLong(id);
     }
-
-    /*
-    public Palen(String naam) {
-    }
-
-     */
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
