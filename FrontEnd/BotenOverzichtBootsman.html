@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <link href="./style.css" type="text/css" rel="stylesheet">
+        <script src="BotenOverzichtBootsman.js" type="text/javascript">
+            // dit gebied gebruiken om eerst functies uit te proberen, voor ze in js file te zetten. 
+        </script>
+    </head>
+    <body onload="botenInzien()">
+        <header>
+            <h1>Vloot systeem</h1>
+        </header>
+        <main id="mainVlootBootsman">
+            <section id="sectionBotenInzien">
+                <!-- <input type="button" id="buttonBootInzien" value="boten inzien" onclick="botenInzien()"> <br>
+                
+                <div id="testBotenInzien"></div> -->
+                <h2>De vloot</h2>
+                <table id="tabelBotenInzien"> 
+                    <th> id </th>
+                    <th> Naam </th>
+                    <th> Type </th>
+                    <th> Beschikbaar </th>
+                    <th> Gebruik type </th>
+                    <th> Loods </th>
+                    <th> Bijhoorende <br> palen </th>
+                    <th> Aanvullende informatie </th>
+                    <th> Gegevens updaten </th>
+                    <th> Boot verwijderen </th>
+                </table>
+            </section>
+
+            <br><hr><br>
+
+            <h2>Boot toevoegen / gegevens aanpassen</h2>
+            <section id="sectionBootToevoegen">
+                <label>Naam: </label>
+                <input id="invoerNaam" type="text"> <br>
+                <label>Type:</label>
+                <input id="invoerType" type="text" size="6"> <br>
+                <label id="labelBeschikbaar">Beschikbaar: </label>
+                <input id="invoerBeschikbaar" type="checkbox"> <br>
+                <label id="labelLoodsNummer">Loodsnummer: </label>
+                <input id="invoerLoodsNummer" value="0" type="number" min=0 max=5> <br>
+                <label id="labelPalenId">Palen: </label>
+                <input id="invoerPalen" value="1" type="number" min=1 max=1000> <br>
+                <br>
+                <label>Aanvullende informatie: </label> <br>
+                <textarea id="invoerAanvullendeInformatie" value="Aanvullende informatie" type="text"></textarea> <br>
+                <br>
+                <label>Toegestaan gerbuik: </label> <br>
+                <div id=invoerGebruikType> 
+                    <input type="radio" id="gebruikTypeCompo" name="gebruikType" value="compo" checked>
+                    <label for="compo">competitieboot</label><br>
+                    <input type="radio" id="gebruikTypeWedstro" name="gebruikType" value="wedstro">
+                    <label for="wedstro">wedstrijdboot</label><br>
+                    <input type="radio" id="gebruikTypePrive" name="gebruikType" value="prive">
+                    <label for="prive">prive</label>
+                </div>
+                
+                <label id="toevoegMessageBoot"></label> <br>
+                <input id="buttonBootToevoegen" type="button" class="button" value="Boot toevoegen" onclick="bootToevoegen()">
+                <a href="BootsmanPortaal.html"><input id="buttonBootsmanPortaal" class="button" type="button" value="Bootsman portaal"></a> <br>
+                
+                <input id="bootId" type="text" size="7" disabled >
+            </section>
+    </main>
+    <footer>
+        <p>Lisa Tetteroo, working talent</p>
+    </footer>    
+    </body>
+</html>
