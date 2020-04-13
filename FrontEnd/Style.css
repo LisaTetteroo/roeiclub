@@ -71,6 +71,7 @@ table, th, td {
 }
 
 table {
+    width: 98%;
     margin-left: 15px;
 }
 

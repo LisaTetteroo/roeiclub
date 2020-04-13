@@ -1,2 +1,32 @@
-Hello world!
-account maken
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <link href="./style.css" type="text/css" rel="stylesheet">
+        <script src="accountMaken.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Vloot systeem</h1>
+        </header>
+        <main id="mainLoginpage">
+            <h2>Account aanmaken:</h2>
+            <label>Lidnummer: </label> <br>
+            <input id="invoerLidnummer" type="text">
+            <br>
+            <label>Gebruikersnaam: </label> <br>
+            <input id="invoerGebruikersnaamAanmaken" type="text">
+            <br>
+            <label>Wachtwoord: </label><br>
+            <input id="invoerWachtwoordAanmaken" type="text">
+            <br>
+            <label id="toevoegMessageAccount"></label> <br>
+            <input id="buttonAccountAanmaken" class="button" type="button" value="Maak account" onclick="accountToevoegen()">
+            <a href="home.html"><input id="homeButton" class="button" type="button" value="annuleren"></a>
+        </main>
+        <footer>
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>
+    </body>
+</html>
