@@ -107,6 +107,9 @@ function verwijderBoot (bootId, bootNaam) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 console.log(this.responseText);
+                if (this.readyState == 4) {
+                    botenInzien();
+                }
             }
             xhr.open("DELETE", "http://localhost:8082/bootVerwijderen", true);
             xhr.setRequestHeader("Content-type", "application/json");

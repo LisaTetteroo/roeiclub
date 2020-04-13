@@ -14,6 +14,9 @@ function palenToevoegen() {
     xhr.onreadystatechange = function() {
         console.log(this.responseText);
         document.getElementById("toevoegMessagePalen").innerHTML = this.responseText
+        if (this.readyState == 4) {
+            palenInzien();
+        }
     }
 
     xhr.open("POST", "http://localhost:8082/palenToevoegen", true);
@@ -92,6 +95,9 @@ function verwijderPalen (palenId) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 console.log(this.responseText);
+                if (this.readyState == 4) {
+                    palenInzien();
+                }
             }
             xhr.open("DELETE", "http://localhost:8082/palenVerwijderen/" +palenId+ "", true);
             xhr.setRequestHeader("Content-type", "application/json");
