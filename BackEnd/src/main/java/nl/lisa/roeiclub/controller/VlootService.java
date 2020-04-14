@@ -1,7 +1,9 @@
 package nl.lisa.roeiclub.controller;
 
+import nl.lisa.roeiclub.domein.Account;
 import nl.lisa.roeiclub.domein.Boot;
 import nl.lisa.roeiclub.domein.Palen;
+import nl.lisa.roeiclub.domein.Reservering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,12 @@ public class VlootService {
 
     @Autowired
     PalenRepository pr;
+
+    @Autowired
+    AccountRepository ar;
+
+    @Autowired
+    ReserveringRepository rr;
 
     public String bootToevoegen(Boot b) {
         System.out.println("in service bootToevoegen");
@@ -69,7 +77,31 @@ public class VlootService {
         pr.deleteById(id);
     }
 
-    /*(
+    public void reserveringMaken(long bootId, long accountId) {
+        System.out.println("in vlootservice in reserveringmaken");
+        Boot b = null;
+        Account a = null;
+        Iterable<Account> accounts = ar.findAll();
+        Iterable<Boot> boten = br.findAll();
+        for (Boot boot:boten) {
+            if (boot.getId() == bootId) {
+                System.out.println("boot gevonden met id: " + boot.getId());
+                b = boot;
+            }
+        }
+        for (Account account:accounts) {
+            if (account.getId() == accountId) {
+                System.out.println("account gevonden met id: " + account.getId());
+                a = account;
+            }
+        }
+
+
+        Reservering r = new Reservering(b ,a);
+        rr.save(r);
+    }
+
+    /*
     public void probeersel () {
         System.out.println("bla");
         Boot b = new Boot();
