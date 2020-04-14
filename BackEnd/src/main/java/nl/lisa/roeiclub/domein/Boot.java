@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Boot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private long id;
 
     private String naam;

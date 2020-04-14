@@ -3,7 +3,7 @@ package nl.lisa.roeiclub.domein;
 import javax.persistence.*;
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"gebruikersnaam", "lid"})})
+//@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"gebruikersnaam"})})
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
