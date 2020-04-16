@@ -42,4 +42,14 @@ public class Account {
     public void setLid(Lid lid) {
         this.lid = lid;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", gebruikersnaam='" + gebruikersnaam + '\'' +
+                ", wachtwoord='" + wachtwoord + '\'' +
+                ", lid=" + lid +
+                '}';
+    }
 }

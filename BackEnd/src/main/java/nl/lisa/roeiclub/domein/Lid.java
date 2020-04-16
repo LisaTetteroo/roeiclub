@@ -161,4 +161,14 @@ public class Lid {
     public void setRekeningnummer(String rekeningnummer) {
         this.rekeningnummer = rekeningnummer;
     }
+
+    @Override
+    public String toString() {
+        return "Lid{" +
+                "id=" + id +
+                ", voornaam='" + voornaam + '\'' +
+                ", tussenvoegsel='" + tussenvoegsel + '\'' +
+                ", achternaam='" + achternaam + '\'' +
+                '}';
+    }
 }
