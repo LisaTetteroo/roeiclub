@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,4 +38,15 @@ public class LidService {
         }
     }
 
+    public Account accountInzienBijGebruikersnaam(String gebruikersnaam) {
+        System.out.println("in lidservic gebruikersnaam: " + gebruikersnaam);
+        Account accountGebruikersnaam = null;
+        List<Account> accountMetGbruikersnaam = ar.findByGebruikersnaam(gebruikersnaam);
+        System.out.println(accountMetGbruikersnaam);
+        if (accountMetGbruikersnaam.size() == 1) {
+            accountGebruikersnaam = accountMetGbruikersnaam.get(0);
+            System.out.println("gevonden: " + accountGebruikersnaam);
+        }
+        return accountGebruikersnaam;
+    }
 }

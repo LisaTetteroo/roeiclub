@@ -3,7 +3,7 @@
     <head>
         <title> RoeiClub BotenOverzicht</title>
         <link href="./style.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript">
+        <script src="inlogLeden.js" type="text/javascript">
         </script>
     </head>
     <body>
@@ -18,7 +18,7 @@
             <label>Wachtwoord: </label><br>
             <input id="invoerWachtwoordLid" type="password">
             <br>
-            <a href="./LedenPortaal.html"> <input id="buttonInloggenLid" class="button" type="button" value="login"> </a>
+            <a href="./LedenPortaal.html"> <input id="buttonInloggenLid" class="button" type="button" value="login" onclick="saveId()"></a> 
             <a href="home.html"><input id="homeButton" class="button" type="button" value="annuleren"></a>
         </main>
         <footer>

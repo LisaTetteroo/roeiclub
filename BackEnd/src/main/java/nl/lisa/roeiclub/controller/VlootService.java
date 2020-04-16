@@ -95,8 +95,7 @@ public class VlootService {
                 a = account;
             }
         }
-
-
+        
         Reservering r = new Reservering(b ,a);
         rr.save(r);
     }
