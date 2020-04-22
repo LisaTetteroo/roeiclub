@@ -10,6 +10,7 @@ function tabelBotenInzienVullen() {
         if (this.readyState == 4) {
             var boot = JSON.parse(this.responseText);
             console.log(boot);
+            test();
             for (var i = 0 ; i < boot.length ; i++) {
                 var rij = tabel.appendChild(tabel.insertRow());
                 var celId = rij.insertCell(0);
@@ -50,12 +51,17 @@ function createButtonReserveer (id, cel) {
 
 function bootReserveren (bootId) {
     var accountId = sessionStorage.getItem("accountId");
+    var datumReservering = document.getElementById("datumReservering");
     console.log(accountId)
     console.log("reserveren van bootid:" + bootId + "door accountId: "+ accountId);
 
     var xhr = new XMLHttpRequest;
     xhr.onreadystatechange = function () {
     }
-    xhr.open("post", "http://localhost:8082/reserveringMakenreq?bootIdParam="+bootId+"&accountIdParam="+accountId, true);
+    xhr.open("post", "http://localhost:8082/reserveringMakenreq?bootIdParam="+bootId+"&accountIdParam="+accountId+"&datumReserveringParam="+datumReservering, true);
     xhr.send();
+}
+
+function test () {
+    console.log(sessionStorage.getItem("accountId"))
 }

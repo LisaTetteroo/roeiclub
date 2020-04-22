@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @RestController
 
 public class ReserveringEndpoint {
@@ -14,11 +16,13 @@ public class ReserveringEndpoint {
     VlootService vs;
 
     @PostMapping("/reserveringMakenreq")
-    public void reserveringMaken(@RequestParam String bootIdParam, @RequestParam String accountIdParam) {
+    public void reserveringMaken(@RequestParam String bootIdParam, @RequestParam String accountIdParam, @RequestParam String datumReserveringParam) {
         System.out.println("In endpoint reserveringmaken");
         long bootId = Long.parseLong(bootIdParam);
         long accountId = Long.parseLong(accountIdParam);
-        vs.reserveringMaken(bootId, accountId);
+        LocalDate datumReservering = LocalDate.parse(datumReserveringParam);
+        vs.reserveringMaken(bootId, accountId, datumReservering);
     }
+    //noteToSelf: local date = YYYY/MM/DD
 
 }
