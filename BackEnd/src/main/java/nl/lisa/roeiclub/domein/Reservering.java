@@ -6,9 +6,13 @@ import java.time.LocalTime;
 
 @Entity
 public class Reservering {
-    public Reservering(Boot boot, Account account) {
+    public Reservering () {
+    }
+
+    public Reservering(Boot boot, Account account, LocalDate datum) {
         this.boot = boot;
         this.account = account;
+        this.datum = datum;
     }
 
     @Id

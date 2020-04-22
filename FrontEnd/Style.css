@@ -54,7 +54,6 @@ footer {
     text-align: center;
     position: fixed;
     width: 100%;
-    left: -10px;
     bottom: -5px;
     z-index: 9999;
 }
@@ -72,6 +71,7 @@ table, th, td {
 
 table {
     width: 98%;
+    max-width: 500px;
     margin-left: 15px;
 }
 
