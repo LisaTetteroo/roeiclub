@@ -51,14 +51,16 @@ function createButtonReserveer (id, cel) {
 
 function bootReserveren (bootId) {
     var accountId = sessionStorage.getItem("accountId");
-    var datumReservering = document.getElementById("datumReservering");
+    var datumReservering = document.getElementById("datumReservering").value;
+    var startTijdReservering = document.getElementById("startTijdReservering").value;
+    var eindTijdReservering = document.getElementById("eindTijdReservering").value;
     console.log(accountId)
-    console.log("reserveren van bootid:" + bootId + "door accountId: "+ accountId);
+    console.log("reserveren van bootid:" + bootId + "door accountId: "+ accountId + "op datum: " + datumReservering + "starttijd: " +startTijdReservering + "starttijd: " +eindTijdReservering);
 
     var xhr = new XMLHttpRequest;
     xhr.onreadystatechange = function () {
     }
-    xhr.open("post", "http://localhost:8082/reserveringMakenreq?bootIdParam="+bootId+"&accountIdParam="+accountId+"&datumReserveringParam="+datumReservering, true);
+    xhr.open("post", "http://localhost:8082/reserveringMakenreq?bootIdParam="+bootId+"&accountIdParam="+accountId+"&datumReserveringParam="+datumReservering+"&startTijdParam="+startTijdReservering+"&eindTijdParam="+eindTijdReservering, true);
     xhr.send();
 }
 

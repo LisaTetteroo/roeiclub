@@ -9,10 +9,12 @@ public class Reservering {
     public Reservering () {
     }
 
-    public Reservering(Boot boot, Account account, LocalDate datum) {
+    public Reservering(Boot boot, Account account, LocalDate datum, LocalTime startTijd, LocalTime eindTijd) {
         this.boot = boot;
         this.account = account;
         this.datum = datum;
+        this.startTijd = startTijd;
+        this.eindTijd = eindTijd;
     }
 
     @Id

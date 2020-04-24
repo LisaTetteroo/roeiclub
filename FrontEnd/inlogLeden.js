@@ -1,5 +1,5 @@
 function saveId () {
-    //sessionStorage.setItem("accountId", null);
+    //sessionStorage.setItem("accountId", 0);
     var gebruikersnaam = document.getElementById("invoerGebruikersnaamLid").value;
     console.log(gebruikersnaam)
     //var account = {}
