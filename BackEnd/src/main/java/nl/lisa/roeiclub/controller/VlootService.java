@@ -1,14 +1,12 @@
 package nl.lisa.roeiclub.controller;
 
-import nl.lisa.roeiclub.domein.Account;
-import nl.lisa.roeiclub.domein.Boot;
-import nl.lisa.roeiclub.domein.Palen;
-import nl.lisa.roeiclub.domein.Reservering;
+import nl.lisa.roeiclub.domein.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +26,9 @@ public class VlootService {
 
     @Autowired
     ReserveringRepository rr;
+
+    @Autowired
+    LidRepository lr;
 
     public String bootToevoegen(Boot b) {
         System.out.println("in service bootToevoegen");
@@ -79,7 +80,7 @@ public class VlootService {
         pr.deleteById(id);
     }
 
-    public void reserveringMaken(long bootId, long accountId, LocalDate datumReservering) {
+    public void reserveringMaken(long bootId, long accountId, LocalDate datumReservering, LocalTime startTijd, LocalTime eindTijd) {
         System.out.println("in vlootservice in reserveringmaken");
         Boot b = null;
         Account a = null;
@@ -90,6 +91,7 @@ public class VlootService {
             if (boot.getId() == bootId) {
                 System.out.println("boot gevonden met id: " + boot.getId());
                 b = boot;
+                break;
             } else {
                 message = "boot werd niet gevonden";
                 System.out.println("geen boot gevonden");
@@ -101,6 +103,7 @@ public class VlootService {
             if (account.getId() == accountId) {
                 System.out.println("account gevonden met id: " + account.getId());
                 a = account;
+                break;
             } else {
                 message = "account werd niet gevonden";
                 System.out.println("geen account gevonden");
@@ -112,6 +115,17 @@ public class VlootService {
         // datum controle
         boolean datumBezet = false;
         System.out.println(datumReservering);
+        Optional<Reservering> reserveringPerBootOptional = rr.findByDatum(datumReservering);
+        if ( reserveringPerBootOptional.isPresent()) {
+            message = "boot is bezet";
+        } else {
+            Reservering r = new Reservering(b , a , datumReservering, startTijd, eindTijd);
+            rr.save(r);
+            message = "reservering op datum gelukt";
+        }
+        System.out.println(message);
+
+        /*
         List<Reservering> reserveringPerBoot = rr.findByBoot(b);
         System.out.println(reserveringPerBoot);
         for (Reservering reservering : reserveringPerBoot) {
@@ -132,9 +146,17 @@ public class VlootService {
             message = "boot is niet beschikbaar op die datum";
             System.out.println(message);
         }
+        */
 
        // Reservering r = new Reservering(b ,a);
        // rr.save(r);
+    }
+
+    public void dummyDB(Lid lid, Account account, Palen palen, Boot boot) {
+        lr.save(lid);
+        ar.save(account);
+        pr.save(palen);
+        br.save(boot);
     }
 
     /*

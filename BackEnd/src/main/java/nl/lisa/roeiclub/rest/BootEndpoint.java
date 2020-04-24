@@ -1,7 +1,10 @@
 package nl.lisa.roeiclub.rest;
 
 import nl.lisa.roeiclub.controller.VlootService;
+import nl.lisa.roeiclub.domein.Account;
 import nl.lisa.roeiclub.domein.Boot;
+import nl.lisa.roeiclub.domein.Lid;
+import nl.lisa.roeiclub.domein.Palen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +51,22 @@ public class BootEndpoint {
     @GetMapping("/beschikbareBoten")
     public void beschikbareBoten () {
         vs.beschikbareBoten();
+    }
+
+    @PostMapping("/dummyDB")
+    public void dummyDB () {
+        Lid lid = new Lid();
+        lid.setVoornaam("Jane");
+        lid.setAchternaam("Doe");
+        Account account = new Account();
+        account.setLid(lid);
+        account.setGebruikersnaam("test");
+        Palen palen = new Palen();
+        palen.setSoort("Boord bigblade");
+        Boot boot = new Boot();
+        boot.setNaam("Dwars");
+        boot.setPalen(palen);
+        vs.dummyDB(lid, account, palen, boot);
     }
 
     /*
