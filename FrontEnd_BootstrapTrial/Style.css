@@ -1,0 +1,111 @@
+body {
+    background-color: #bda7c6;
+    font-family: sans-serif;
+}
+
+h1 {
+   color: white;
+}
+h2 {
+    color: #461670;
+}
+
+label {
+    color: #9e091d;
+}
+
+header {
+    background-color: #9e091d;
+    text-align: center;
+    position: fixed;
+    padding: 20px;
+    width:100%;
+    z-index: 9999;
+    top: -10px;
+    left: -10px;
+}
+
+main {
+    position: relative;
+}
+
+#buttonsHomepage, #mainLoginpage, #mainVlootBootsman, #mainBotenInzien, #mainPalenBootsman {
+    text-align: center;
+    padding-top: 130px;
+    padding-bottom: 25px;
+}
+
+#mainBotenInzien {
+    padding-top: 75px;
+    padding-bottom: 60px;
+}
+
+#mainVlootBootsman {
+    padding-bottom: 40px;
+}
+
+#sectionBootToevoegen, #sectionPalenToevoegen {
+    padding-left: 40%;
+    text-align: left;
+}
+
+footer {
+    background-color: #9e091d;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: -5px;
+    z-index: 9999;
+}
+
+p, footer {
+    color: white;
+}
+
+table, th, td {
+    text-align: center;
+    border: 1px solid #9e091d;
+    color: #461670;
+    
+}
+
+table {
+    width: 98%;
+    max-width: 500px;
+    margin-left: 15px;
+}
+
+th, td {
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    margin: 10px;
+}
+
+.button, button{
+    background-color:#461670;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#buttonsHomepage, #mainLoginpage {
+    text-align: center;
+}
+
+#bootId {
+    visibility: hidden;
+}
+
+

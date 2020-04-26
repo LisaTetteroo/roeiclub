@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link  rel="stylesheet" href="./style.css" type="text/css">
+        <script type="text/javascript" src="./Javascript/inlogLeden.js"></script>        
+    </head>
+
+    <body>
+        <header class="container-fluid bg-paars text-center">
+            <!--<img src="https://img.icons8.com/ios/50/000000/rowing-2.png" class="mb4 d-inline-block" >-->
+            <h1 class="text-white">Vloot systeem</h1>
+        </header>
+
+        <main class="container text-center">
+            <h2 class="color-paars">Inloggen</h2>
+            
+            <form class="form-signin">
+                <input type="text" id="invoerGebruikersnaam" class="form-control m-1" placeholder="Gebruikersnaam">
+                <input type="password" id="invoerWachtwoord" class="form-control m-1" placeholder="Wachtwoord">
+
+
+                <a href="./ledenPortaal.html">
+                    <input id="buttonInloggenLid" class="btn bg-paars text-white m-4" type="button" value="login" onclick="saveId()">
+                </a>
+                <a href="home.html">
+                    <input id="homeButton" class="btn bg-paars text-white m-4" type="button" value="Home">
+                </a>
+            </form>
+        </main>
+        
+        <footer class="container-fluid bg-paars text-center text-muted">
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link  rel="stylesheet" href="./style.css" type="text/css">
+        <script type="text/javascript" src="./Javascript/accountMaken.js"></script>        
+    </head>
+
+    <body>
+        <header class="container-fluid bg-paars text-center">
+            <h1 class="text-white d-inline-block">Vloot systeem</h1>
+        </header>
+
+        <main class="container text-center">
+            <h2 class="color-paars">Account aanmaken</h2>
+
+            <form class="form-signin">
+                <input type="text" id="invoerLidnummer" class="form-control m-1" placeholder="Lidnummer">
+                <input type="text" id="invoerGebruikersnaamAanmaken" class="form-control m-1" placeholder="Gebruikersnaam">
+                <input type="password" id="invoerWachtwoordAanmaken" class="form-control m-1" placeholder="Wachtwoord">
+                
+                <label id="toevoegMessageAccount"></label> <br>
+                <input id="buttonAccountAanmaken" class="btn bg-paars text-white m-2" type="button" value="Maak account" onclick="accountToevoegen()">
+                <a href="home.html">
+                    <input id="homeButton" class="btn bg-paars text-white m-4" type="button" value="Home">
+                </a>
+            </form>
+
+        </main>
+        
+        <footer class="container-fluid bg-paars text-center text-muted">
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>
+    </body>
+
+</html>

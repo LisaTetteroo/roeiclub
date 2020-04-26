@@ -1,0 +1,40 @@
+
+header {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+body {
+    background-color: #bda7c6;
+    
+}
+
+.table .thead-dark th {
+background-color: #50306d;
+border-color: #50306d;
+}
+
+.btn-primary {
+background-color: #50306d;
+border-color: #50306d;
+}
+
+.btn-outline-primary {
+color:#461670;
+border-color: #50306d;
+border-radius: 0.3rem;
+
+}
+
+.text-primary {
+color: #461670 !important;
+}
+
+.text-secondary {
+color: #9e091d !important;
+}
+
+.bg-primary {
+    background-color: #9e091d !important;
+}
+  

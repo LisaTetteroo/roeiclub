@@ -67,6 +67,32 @@ public class BootEndpoint {
         boot.setNaam("Dwars");
         boot.setPalen(palen);
         vs.dummyDB(lid, account, palen, boot);
+        Lid lid2 = new Lid();
+        lid2.setVoornaam("Victoria");
+        lid2.setAchternaam("Regia");
+        Account account2 = new Account();
+        account2.setLid(lid2);
+        account2.setGebruikersnaam("test2");
+        Palen palen2 = new Palen();
+        palen2.setSoort("scull smoothie");
+        palen2.setAantal(4);
+        Boot boot2 = new Boot();
+        boot2.setNaam("aquarius");
+        boot2.setPalen(palen2);
+        vs.dummyDB(lid2, account2, palen2, boot2);
+        Lid lid3 = new Lid();
+        lid3.setVoornaam("john");
+        lid3.setAchternaam("doe");
+        Account account3 = new Account();
+        account3.setLid(lid3);
+        account3.setGebruikersnaam("test3");
+        Palen palen3 = new Palen();
+        palen3.setSoort("boord tulp");
+        palen3.setAantal(4);
+        Boot boot3 = new Boot();
+        boot3.setNaam("knorretje");
+        boot3.setPalen(palen3);
+        vs.dummyDB(lid3, account3, palen3, boot3);
     }
 
     /*
