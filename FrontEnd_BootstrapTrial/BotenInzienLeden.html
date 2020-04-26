@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <link href="./style.css" type="text/css" rel="stylesheet">
+        <script src="BotenInzienLeden.js" type="text/javascript">
+        </script>
+    </head>
+    <body onload="tabelBotenInzienVullen()">
+        <h2>De vloot </h2>
+        <header>
+            <a href="home.html"><h1>Vloot systeem</h1></a>
+        </header>
+        <main id="mainBotenInzien">
+            <div id=reserveringAttributen>
+                <label> datum reservering</label>  
+                <input type="date" id="datumReservering">
+                <label> starttijd reservering </label>
+                <input type="time" id="startTijdReservering">
+                <label> eindtijd reservering </label>
+                <input type="time" id="eindTijdReservering">
+            </div>
+            <h2>De vloot</h2>
+            <table id="tabelBotenInzien"> 
+                <th> id </th>
+                <th> naam </th>
+                <th> type </th>
+                <th> beschikbaar </th>
+                <th> wie mag gebruiken </th>
+                <th> loods </th>
+                <th> bijhoorende palen </th>
+                <th> aanvullende informatie </th>
+                <th> reserveren </th>
+            </table>
+            <br>
+            <a href="LedenPortaal.html"><input id="buttonBootsmanPortaal" class="button" type="button" value="Leden portaal"></a>
+        </main>
+        <footer>
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>
+    </body>
+</html>

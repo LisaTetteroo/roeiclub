@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> RoeiClub PalenOverzicht</title>
+        <link href="./bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="./bootstrap/css/bootstrap-grid.css" type="text/css" rel="stylesheet">
+        <link href="./customized-bootstrap.css" type="text/css" rel="stylesheet">
+        <script src="./Javascript/PalenOverzicht.js" type="text/javascript">
+            // dit gebied gebruiken om eerst functies uit te proberen, voor ze in js file te zetten. 
+        </script>
+    </head>
+    <body onload=palenInzien()>
+        <header class="container-fluid bg-primary">
+            <h1 class="text-light text-center">Vloot systeem</h1>
+        </header>
+        <main id="mainPalenBootsman">
+            <section id="sectionPalenInzien" class="container">
+                <!-- <input type="button" id="buttonPalenInzien" value="palen inzien" onclick="palenInzien()"> 
+                <br>
+
+                <div id="testPalenInzien"></div> -->
+                <div class="container text-primary">
+                    <h2>Palenoverzicht</h2>
+                    <table id="tabelPalenInzien" class="table"> 
+                        <thead class="thead-dark">
+                        <th> id </th>
+                        <th> soort </th>
+                        <th> locatie </th>
+                        <th> aantal</th>
+                        <th> wie mag gebruiken </th>
+                        <th> Gegevens updaten </th>
+                        <th> Palen verwijderen </th>
+                        </thead>
+                    </table>
+                </div>    
+            </section>
+
+            <br><hr><br>
+
+            
+            <section id="sectionPalenToevoegen" class="container text-secondary">
+                <h2 class=text-primary>Palen toevoegen / gegevens aanpassen</h2>
+                <div class="row">
+                    <!--<div class="col-xl"></div> <div class="col-lg"></div> <div class="col-md"></div>-->
+                    <div class="col"><label>id: </label></div>
+                    <div class="col"><input id="palenId" type="text" size="4" disabled></div>
+                    <div class="col-md"></div> <div class="col-lg"></div> <div class="col-xl"></div>
+                </div>
+                
+                
+                <label>id: </label>
+                <input id="palenId" type="text" size="4" disabled> <br>
+                <label>Soort: </label>
+                <input id="invoerSoort" type="text"> <br>
+                <label id="labelLocatie">locatie: </label>
+                <input id="invoerLocatie" type="number" min=0 max=1000> <br>
+                <label id="labelAantal">Aantal: </label>
+                <input id="invoerAantal" type="number" min=0 max=8 step=2> <br>
+                <label>Toekenning: </label>
+                <input id="invoerToekenning" value="toekenning nvt" type="text"> <br>
+                
+                <label id="toevoegMessagePalen"></label> <br>
+                <input id="buttonPalenToevoegen" value="palen toevoegen" type="button" class="btn-primary" onclick="palenToevoegen()">
+                <a href="BootsmanPortaal.html"><input id="buttonBootsmanPortaal" class="btn-primary" type="button" value="Bootsman portaal"></a>
+                <br>
+                
+                
+            </section>
+        </main>
+        <footer>
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>    
+    </body>
+</html>
