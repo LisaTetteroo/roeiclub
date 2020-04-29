@@ -24,7 +24,7 @@ function palenToevoegen() {
     xhr.send(palenJSON);
 }
 
-function palenInzien () {
+function tabelPalenVullen () {
     //alert("test button boten inzien")
 
     var tabel = document.getElementById("tabelPalenInzien");      
@@ -52,10 +52,10 @@ function palenInzien () {
                 celAantal.innerHTML = palen[i].aantal;
                 var celToekenning = rij.insertCell();
                 celToekenning.innerHTML = palen[i].toekenning;
-                var celVerwijderPalen = rij.insertCell();
-                createButtonVerwijder(palen[i].id, celVerwijderPalen);
                 var celUpdatePalen = rij.insertCell();
                 createButtonUpdate(palen[i].id, celUpdatePalen);
+                var celVerwijderPalen = rij.insertCell();
+                createButtonVerwijder(palen[i].id, celVerwijderPalen);
 
             }
         }
@@ -68,7 +68,7 @@ function palenInzien () {
 function createButtonVerwijder (id, cel) {
     var buttonVerwijderPalen = document.createElement("button");
     buttonVerwijderPalen.id =  id;
-    buttonVerwijderPalen.className = "btn-outline-primary rounded";
+    buttonVerwijderPalen.className = "btn-outline-paars";
     buttonVerwijderPalen.innerHTML = "verwijder Palen";
     buttonVerwijderPalen.onclick = function () {
         //alert("verwijderknop" + id)
@@ -81,7 +81,7 @@ function createButtonVerwijder (id, cel) {
 function createButtonUpdate (id, cel) {
     var buttonUpdatePalen = document.createElement("button");
     buttonUpdatePalen.id =  id;
-    buttonUpdatePalen.className = "btn-outline-primary rounded";
+    buttonUpdatePalen.className = "btn-outline-paars";
     buttonUpdatePalen.innerHTML = "gegevens aanpassen";
     buttonUpdatePalen.onclick = function () {
         //alert("update knop" + id)

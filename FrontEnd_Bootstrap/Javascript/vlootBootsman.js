@@ -18,18 +18,16 @@ function bootToevoegen(){
         console.log(this.responseText);
         document.getElementById("toevoegMessageBoot").innerHTML = this.responseText;
         if (this.readyState == 4) {
-            botenInzien();
+            tabelBotenInzienVullen();
         }
     }
 
     xhr.open("POST", "http://localhost:8082/bootToevoegen", true);
     xhr.setRequestHeader("Content-type", "application/json");
-    xhr.send(bootJSON);
-
-    
+    xhr.send(bootJSON);    
 }
 
-function botenInzien () {
+function tabelBotenInzienVullen() {
     //alert("test button boten inzien")
     var tabel = document.getElementById("tabelBotenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");
@@ -77,6 +75,7 @@ function botenInzien () {
 function createButtonVerwijder (id, naam, cel) {
     var buttonVerwijderBoot = document.createElement("button");
     buttonVerwijderBoot.id = id;
+    buttonVerwijderBoot.className = "btn-outline-paars";
     buttonVerwijderBoot.innerHTML = "verwijder boot";
     buttonVerwijderBoot.onclick = function () {
         verwijderBoot(id, naam);
@@ -88,6 +87,7 @@ function createButtonVerwijder (id, naam, cel) {
 function createButtonUpdate (id, cel) {
     var buttonUpdateBoot = document.createElement("button");
     buttonUpdateBoot.id = id;
+    buttonUpdateBoot.className = "btn-outline-paars"
     buttonUpdateBoot.innerHTML = "gegevens aanpassen";
     buttonUpdateBoot.onclick = function () {
         bootUpdatenVullen(id);
@@ -108,7 +108,7 @@ function verwijderBoot (bootId, bootNaam) {
             xhr.onreadystatechange = function() {
                 console.log(this.responseText);
                 if (this.readyState == 4) {
-                    botenInzien();
+                    tabelBotenInzienVullen();
                 }
             }
             xhr.open("DELETE", "http://localhost:8082/bootVerwijderen", true);
@@ -145,9 +145,6 @@ function bootUpdatenVullen (bootId) {
                     } else if (boot[i].gebruikType === "prive") {
                         document.getElementById("gebruikTypePrive").checked = true;
                     }
-                    
-                    
-                    // TO DO: button bootUpdaten functie geven
                 }
             }
 
@@ -155,7 +152,6 @@ function bootUpdatenVullen (bootId) {
     }
     xhr.open("GET", "http://localhost:8082/botenInzien", true);
     xhr.send(); 
-
 }
 
 function bootUpdaten() {

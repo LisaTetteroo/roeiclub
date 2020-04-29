@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 
 public interface ReserveringRepository extends CrudRepository <Reservering, Long> {
-    List<Reservering> findByBoot(Boot boot);
+    List<Reservering> findByBootAndDatum(Boot boot, LocalDate datum);
     Optional<Reservering> findByDatum(LocalDate datum);
 
 }

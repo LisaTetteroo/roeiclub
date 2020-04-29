@@ -6,6 +6,7 @@ header {
 
 body {
     background-color: #bda7c6;
+    margin-bottom: 50px;
 }
 
 footer {
@@ -64,4 +65,7 @@ table {
     border-color: #50306d;
     border-radius: 0.3rem;
 }
-  
+
+#bootId {
+    visibility: hidden;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title> RoeiClub BotenOverzicht</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link  rel="stylesheet" href="./style.css" type="text/css">
+        <script type="text/javascript" src="./Javascript/vlootBootsman.js"></script>        
+    </head>
+
+    <body onload="tabelBotenInzienVullen()">
+        <header class="container-fluid bg-paars text-center">
+            <h1 class="text-white">Vloot systeem</h1>
+        </header>
+
+        <main>
+            <div class="container-lg">
+                <h2 class="text-center color-paars">De vloot</h2>
+
+                <div class="table-responsive-lg">
+                    <table id="tabelBotenInzien" class="table">
+                        <thead class="bg-paars text-light">
+                            <tr>
+                                <th> id </th>
+                                <th> naam </th>
+                                <th> type </th>
+                                <th> beschikbaar </th>
+                                <th> wie mag gebruiken </th>
+                                <th> loods </th>
+                                <th> bijhoorende palen </th>
+                                <th> aanvullende informatie </th>
+                                <th> Gegevens updaten </th>
+                                <th> Boot verwijderen </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div> 
+            </div>
+
+            <div class="m-4"></div>
+
+            <section id="form" class="container-lg">
+                <h2 class="text-center color-paars">Toevoegen/Aanpassen</h2>
+                <form class="form-signin color-paars">
+                    <label>Naam: </label>
+                    <input type="text" id="invoerNaam" class="form-control">
+                    
+                    <label>Type:</label>
+                    <input type="text" id="invoerType" class="form-control">
+                    
+                    <div class="row mt-3 mr-1">
+                        <label class="col-6">Loodsnummer: </label>
+                        <input id="invoerLoodsNummer" class="form-control col-6" value="0" type="number" min=0 max=5>
+                    </div>
+
+                    <div class="row mt-3 mr-1">
+                        <label class="col-6">Palen: </label>
+                        <input id="invoerPalen" class="form-control col-6" value="1" type="number" min=1 max=1000>
+                    </div>
+                    
+                    <div class="custom-control custom-checkbox m-1">
+                        <input type="checkbox" class="custom-control-input" id="invoerBeschikbaar">
+                        <label class="custom-control-label" for="invoerBeschikbaar"> Beschikbaar </label>
+                    </div>
+
+                    <label>Aanvullende informatie: </label> <br>
+                    <textarea id="invoerAanvullendeInformatie" value="Aanvullende informatie" type="text" class="form-control"></textarea>
+                
+                    <div class="row mt-3">
+                        <label class="mt-1 col-6">Toegestaan gerbuik: </label>
+                        <div class="col-6">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="gebruikType" id="gebruikTypeCompo" value="compo" checked>
+                                <label class="custom-control-label" for=gebruikTypeCompo> competitieboot </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="gebruikType" id="gebruikTypeWedstro" value="wedstro">
+                                <label class="custom-control-label" for="gebruikTypeWedstro"> wedstrijdboot </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="gebruikType" id="gebruikTypePrive" value="prive">
+                                <label class="custom-control-label" for=gebruikTypePrive> prive </label>
+                            </div>
+                        </div>
+                    </div>
+                
+                <label id="toevoegMessageBoot"></label> <br>
+
+                    <div class="text-center">
+                        <input id="buttonBootToevoegen" type="button" class="btn bg-paars text-white m-2"  value="Toevoegen / Aanpassen" onclick="bootToevoegen()">
+                        <a href="bootsmanPortaal.html">
+                            <input id="terugButton" class="btn bg-paars text-white m-2" type="button" value="Terug naar bootsman-portaal">
+                        </a>
+                    </div>
+                </form>
+                <input id="bootId" type="text" size="7" disabled >
+            </section>
+        </main>
+
+        <footer class="container-fluid bg-paars text-center text-muted">
+            <p>Lisa Tetteroo, working talent</p>
+        </footer>
+    </body>
+
+</html>
