@@ -92,10 +92,6 @@ public class VlootService {
                 System.out.println("boot gevonden met id: " + boot.getId());
                 b = boot;
                 break;
-            } else {
-                message = "boot werd niet gevonden";
-                System.out.println("geen boot gevonden");
-                return;
             }
         }
 
@@ -104,52 +100,31 @@ public class VlootService {
                 System.out.println("account gevonden met id: " + account.getId());
                 a = account;
                 break;
-            } else {
-                message = "account werd niet gevonden";
-                System.out.println("geen account gevonden");
-                return;
             }
         }
 
-
         // datum controle
-        boolean datumBezet = false;
+        boolean bootBezet = false;
         System.out.println(datumReservering);
-        Optional<Reservering> reserveringPerBootOptional = rr.findByDatum(datumReservering);
-        if ( reserveringPerBootOptional.isPresent()) {
-            message = "boot is bezet";
-        } else {
+        List<Reservering> bootOpDatum = rr.findByBootAndDatum(b, datumReservering);
+        if (bootOpDatum.size() != 0) {
+            //System.out.println("deze boot is al eens op deze datum gereserveerd");
+            // tijdscontrole:
+            for(Reservering r:bootOpDatum) {
+                if (startTijd.isBefore(r.getEindTijd()) && eindTijd.isAfter(r.getStartTijd())) {
+                    bootBezet = true;
+                    message = "boot is bezet";
+                    break;
+                }
+            }
+        }
+
+        if (bootBezet == false) {
             Reservering r = new Reservering(b , a , datumReservering, startTijd, eindTijd);
             rr.save(r);
             message = "reservering op datum gelukt";
         }
         System.out.println(message);
-
-        /*
-        List<Reservering> reserveringPerBoot = rr.findByBoot(b);
-        System.out.println(reserveringPerBoot);
-        for (Reservering reservering : reserveringPerBoot) {
-            System.out.println("in reserveringPerBoot enhanced for loop");
-            if (reservering.getDatum().equals(datumReservering)) {
-                System.out.println("datum is gelijk");
-                datumBezet = true;
-                break;
-            } else {
-                continue;
-            }
-        }
-        if (datumBezet == false) {
-            Reservering r = new Reservering(b , a , datumReservering);
-            rr.save(r);
-            System.out.println("reservering op datum gelukt");
-        } else {
-            message = "boot is niet beschikbaar op die datum";
-            System.out.println(message);
-        }
-        */
-
-       // Reservering r = new Reservering(b ,a);
-       // rr.save(r);
     }
 
     public void dummyDB(Lid lid, Account account, Palen palen, Boot boot) {
