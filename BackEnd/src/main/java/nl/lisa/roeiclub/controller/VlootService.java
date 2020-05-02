@@ -30,6 +30,9 @@ public class VlootService {
     @Autowired
     LidRepository lr;
 
+    @Autowired
+    MailService ms;
+
     public String bootToevoegen(Boot b) {
         System.out.println("in service bootToevoegen");
         Palen p = b.getPalen();
@@ -123,6 +126,15 @@ public class VlootService {
             Reservering r = new Reservering(b , a , datumReservering, startTijd, eindTijd);
             rr.save(r);
             message = "reservering op datum gelukt";
+            try{
+                ms.sendReserveringMail(r);
+                System.out.println("Email verzenden succesvol.");
+            }catch(Exception e){
+                e.printStackTrace();
+                System.out.println("Email verzenden mislukt.");
+            }finally{
+                System.out.println("Klaar met reservering mail.");
+            }
         }
         System.out.println(message);
     }
