@@ -39,7 +39,7 @@ public class VlootService {
         Long paalId = p.getId();
         Optional<Palen> palenoverzichtOptional = pr.findById(paalId);
         if (palenoverzichtOptional.isPresent()) {
-            pr.save(p);
+            //pr.save(p);
             br.save(b);
             return b.getNaam() + " is succesvol opgeslagen.";
         } else {
@@ -111,8 +111,6 @@ public class VlootService {
         System.out.println(datumReservering);
         List<Reservering> bootOpDatum = rr.findByBootAndDatum(b, datumReservering);
         if (bootOpDatum.size() != 0) {
-            //System.out.println("deze boot is al eens op deze datum gereserveerd");
-            // tijdscontrole:
             for(Reservering r:bootOpDatum) {
                 if (startTijd.isBefore(r.getEindTijd()) && eindTijd.isAfter(r.getStartTijd())) {
                     bootBezet = true;
@@ -139,12 +137,21 @@ public class VlootService {
         System.out.println(message);
     }
 
-    public void dummyDB(Lid lid, Account account, Palen palen, Boot boot) {
-        lr.save(lid);
-        ar.save(account);
-        pr.save(palen);
-        br.save(boot);
+    public Iterable<Reservering> reserveringInzien(Long accountIdLong) {
+        System.out.println("in reservering Inzien Service");
+        Optional<Account> accountOptional = ar.findById(accountIdLong);
+        Account account = accountOptional.get();
+        System.out.println(account);
+        Iterable<Reservering> reserveringDoorAccount = rr.findByAccount(account);
+        return reserveringDoorAccount;
+
     }
+
+    public void reserveringAnnuleren(Long id) {
+        System.out.println("in reserveringVerwijderen in BootService");
+        rr.deleteById(id);
+    }
+
 
     /*
     public void probeersel () {

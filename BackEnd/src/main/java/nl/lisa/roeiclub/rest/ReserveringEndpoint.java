@@ -6,10 +6,7 @@ import nl.lisa.roeiclub.domein.Account;
 import nl.lisa.roeiclub.domein.Boot;
 import nl.lisa.roeiclub.domein.Reservering;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,7 +31,20 @@ public class ReserveringEndpoint {
         //LocalTime eindTijd = LocalTime.of(14,00);
         vs.reserveringMaken(bootId, accountId, datumReservering, startTijd, eindTijd);
     }
-    //noteToSelf: local date = YYYY/MM/DD
+
+    @GetMapping("/reserveringInzienreq")
+    public Iterable<Reservering> reserveringInzien(@RequestParam String accountIdString) {
+        System.out.println("in reservering inzien endpoint");
+        Long accountIdLong = Long.parseLong(accountIdString);
+        return vs.reserveringInzien(accountIdLong);
+    }
+
+    @DeleteMapping("/reserveringAnnuleren")
+    public String bootVerwijderen (@RequestBody Reservering reservering) {
+        System.out.println("in reserveringAnnuleren in reserveringEndpoint");
+        vs.reserveringAnnuleren(reservering.getId());
+        return "reservering geannuleerd";
+    }
 
 
 }
