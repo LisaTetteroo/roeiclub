@@ -1,5 +1,6 @@
 package nl.lisa.roeiclub.controller;
 
+import nl.lisa.roeiclub.domein.Account;
 import nl.lisa.roeiclub.domein.Boot;
 import nl.lisa.roeiclub.domein.Reservering;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,6 @@ import java.util.Optional;
 public interface ReserveringRepository extends CrudRepository <Reservering, Long> {
     List<Reservering> findByBootAndDatum(Boot boot, LocalDate datum);
     Optional<Reservering> findByDatum(LocalDate datum);
+    Iterable<Reservering> findByAccount(Account account);
 
 }

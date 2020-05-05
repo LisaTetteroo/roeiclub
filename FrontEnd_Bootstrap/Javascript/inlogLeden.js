@@ -1,4 +1,4 @@
-function saveId () {
+function inloggen () {
     var gebruikersnaam = document.getElementById("invoerGebruikersnaam").value;
     console.log(gebruikersnaam)
 
@@ -11,6 +11,7 @@ function saveId () {
             console.log(accountId);
             sessionStorage.setItem("accountId", accountId);
             console.log("terughalen: " + sessionStorage.getItem("accountId"));
+            location.replace("./ledenPortaal.html")
         }
     }
     xhr.open("Get", "http://localhost:8082/accountBijGebruikersnaamOpvragen/"+gebruikersnaam, true);

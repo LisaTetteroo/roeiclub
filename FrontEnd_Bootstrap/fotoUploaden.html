@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link  rel="stylesheet" href="./style.css" type="text/css">
-        <script type="text/javascript" src="./Javascript/inlogLeden.js"></script>        
+        <script type="text/javascript" src="./Javascript/fotoUploaden.js"></script>        
     </head>
 
     <body>
@@ -15,21 +15,26 @@
             <h1 class="text-white">Vloot systeem</h1>
         </header>
 
-        <main class="container text-center">
-            <h2 class="color-paars">Inloggen</h2>
+        <main class="container">
+            <h2 class="color-paars text-center">Foto Uploaden</h2>
             
             <form class="form-signin">
-                <input type="text" id="invoerGebruikersnaam" class="form-control m-1" placeholder="Gebruikersnaam">
-                <input type="password" id="invoerWachtwoord" class="form-control m-1" placeholder="Wachtwoord">
+                <input type="text" id="invoerLidnummer" class="form-control mb-3" placeholder="Lidnummer">
+                <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="fotoBestand" aria-describedby="inputGroupFileAddon04">
+                      <label class="custom-file-label" for="inputGroupFile04">Kies foto</label>
+                    </div>
+                </div>
+            </form>
 
+            <div class="text-center">
+                <input id="uploadButton" class="btn bg-paars text-white m-4" type="button" value="Upload" onclick="uploadFoto()">
 
-                
-                <input id="buttonInloggenLid" class="btn bg-paars text-white m-4" type="button" value="login" onclick="inloggen()">
-                
                 <a href="home.html">
                     <input id="homeButton" class="btn bg-paars text-white m-4" type="button" value="Home">
                 </a>
-            </form>
+            </div>
         </main>
         
         <footer class="container-fluid bg-paars text-center text-muted">
