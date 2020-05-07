@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.List;
 
 @RestController
 
@@ -28,7 +29,6 @@ public class ReserveringEndpoint {
         DateTimeFormatter tijdFormatter = DateTimeFormatter.ofPattern("HH':'mm");
         LocalTime startTijd = LocalTime.parse(startTijdParam, tijdFormatter);
         LocalTime eindTijd = LocalTime.parse(eindTijdParam, tijdFormatter);
-        //LocalTime eindTijd = LocalTime.of(14,00);
         vs.reserveringMaken(bootId, accountId, datumReservering, startTijd, eindTijd);
     }
 
@@ -37,6 +37,12 @@ public class ReserveringEndpoint {
         System.out.println("in reservering inzien endpoint");
         Long accountIdLong = Long.parseLong(accountIdString);
         return vs.reserveringInzien(accountIdLong);
+    }
+
+    @GetMapping("/alleReserveringenInzien")
+    public List<Reservering> reserveringInzien() {
+        System.out.println("in alle reserveringen inzien endpoint");
+        return vs.alleReserveringenInzien();
     }
 
     @DeleteMapping("/reserveringAnnuleren")

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-public class Reservering {
+public class Reservering implements Comparable<Reservering>{
     public Reservering () {
     }
 
@@ -73,5 +73,19 @@ public class Reservering {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+
+    @Override
+    public int compareTo(Reservering o) {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservering{" +
+                "datum=" + datum +
+                ", boot=" + boot +
+                '}';
     }
 }

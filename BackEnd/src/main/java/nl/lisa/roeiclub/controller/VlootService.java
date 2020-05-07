@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -143,13 +145,41 @@ public class VlootService {
         Account account = accountOptional.get();
         System.out.println(account);
         Iterable<Reservering> reserveringDoorAccount = rr.findByAccount(account);
+        List<Reservering> reserveringDoorAccountLijst = new ArrayList<>();
+        for (Reservering r : reserveringDoorAccount) {
+            reserveringDoorAccountLijst.add(r);
+        }
+        Collections.sort(reserveringDoorAccountLijst, new ReserveringDatumComparator().thenComparing(new ReserveringBootNaamComparator()));
         return reserveringDoorAccount;
 
     }
 
     public void reserveringAnnuleren(Long id) {
         System.out.println("in reserveringVerwijderen in BootService");
+        Reservering r = rr.findById(id).get();;
+        try {
+            ms.sendAnnuleringMail(r);
+            System.out.println("Email verzenden succesvol.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Email verzenden mislukt.");
+        } finally {
+            System.out.println("Klaar met reservering mail.");
+        }
         rr.deleteById(id);
+    }
+
+    public List<Reservering> alleReserveringenInzien() {
+        System.out.println("in reservering Inzien Service");
+        Iterable<Reservering> alleReserveringen = rr.findAll();
+        List<Reservering> alleReserveringenLijst = new ArrayList<>();
+        for (Reservering r : alleReserveringen) {
+            alleReserveringenLijst.add(r);
+        }
+        Collections.sort(alleReserveringenLijst, new ReserveringDatumComparator().thenComparing(new ReserveringBootNaamComparator()));
+        System.out.println(alleReserveringen);
+        System.out.println(alleReserveringenLijst);
+        return alleReserveringenLijst;
     }
 
 

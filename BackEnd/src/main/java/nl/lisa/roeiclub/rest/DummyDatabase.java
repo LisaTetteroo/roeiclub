@@ -47,6 +47,7 @@ public class DummyDatabase {
         Lid lid2 = new Lid();
         lid2.setVoornaam("Victoria");
         lid2.setAchternaam("Regia");
+        lid2.setEmail("vlootsysteem@gmail.com");
         Account account2 = new Account();
         account2.setLid(lid2);
         account2.setGebruikersnaam("test2");
@@ -56,7 +57,7 @@ public class DummyDatabase {
         palen2.setToekenning("Wallie");
         palen2.setLocatie(6);
         Boot boot2 = new Boot();
-        boot2.setNaam("aquarius");
+        boot2.setNaam("Aquarius");
         boot2.setPalen(palen2);
         boot2.setType("1x");
         boot2.setAanvullendeInformatie("Toegewezen aan Wallie. De orginele aquarius is een C2x.");
@@ -67,6 +68,7 @@ public class DummyDatabase {
         Lid lid3 = new Lid();
         lid3.setVoornaam("John");
         lid3.setAchternaam("Doe");
+        lid3.setEmail("vlootsysteem@gmail.com");
         Account account3 = new Account();
         account3.setLid(lid3);
         account3.setGebruikersnaam("test3");
@@ -76,7 +78,7 @@ public class DummyDatabase {
         palen3.setToekenning("Compo");
         palen3.setLocatie(14);
         Boot boot3 = new Boot();
-        boot3.setNaam("knorretje");
+        boot3.setNaam("Knorretje");
         boot3.setPalen(palen3);
         boot3.setBeschikbaar(true);
         boot3.setGebruikType("compo");
