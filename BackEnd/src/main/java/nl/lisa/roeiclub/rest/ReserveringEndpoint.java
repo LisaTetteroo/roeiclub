@@ -21,7 +21,7 @@ public class ReserveringEndpoint {
     VlootService vs;
 
     @PostMapping("/reserveringMakenreq")
-    public void reserveringMaken(@RequestParam String bootIdParam, @RequestParam String accountIdParam, @RequestParam String datumReserveringParam, @RequestParam String startTijdParam, @RequestParam String eindTijdParam) {
+    public String reserveringMaken(@RequestParam String bootIdParam, @RequestParam String accountIdParam, @RequestParam String datumReserveringParam, @RequestParam String startTijdParam, @RequestParam String eindTijdParam) {
         System.out.println("In endpoint reserveringmaken");
         long bootId = Long.parseLong(bootIdParam);
         long accountId = Long.parseLong(accountIdParam);
@@ -29,7 +29,8 @@ public class ReserveringEndpoint {
         DateTimeFormatter tijdFormatter = DateTimeFormatter.ofPattern("HH':'mm");
         LocalTime startTijd = LocalTime.parse(startTijdParam, tijdFormatter);
         LocalTime eindTijd = LocalTime.parse(eindTijdParam, tijdFormatter);
-        vs.reserveringMaken(bootId, accountId, datumReservering, startTijd, eindTijd);
+        String message = vs.reserveringMaken(bootId, accountId, datumReservering, startTijd, eindTijd);
+        return message;
     }
 
     @GetMapping("/reserveringInzienreq")
@@ -48,8 +49,7 @@ public class ReserveringEndpoint {
     @DeleteMapping("/reserveringAnnuleren")
     public String bootVerwijderen (@RequestBody Reservering reservering) {
         System.out.println("in reserveringAnnuleren in reserveringEndpoint");
-        vs.reserveringAnnuleren(reservering.getId());
-        return "reservering geannuleerd";
+        return vs.reserveringAnnuleren(reservering.getId());
     }
 
 

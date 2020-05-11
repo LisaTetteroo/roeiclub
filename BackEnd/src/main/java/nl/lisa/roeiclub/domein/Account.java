@@ -12,6 +12,8 @@ public class Account {
     private String gebruikersnaam;
     private String wachtwoord;
 
+    //private static PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
     @OneToOne
     private Lid lid;
 
@@ -27,14 +29,6 @@ public class Account {
         this.gebruikersnaam = gebruikersnaam;
     }
 
-    public String getWachtwoord() {
-        return wachtwoord;
-    }
-
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
-    }
-
     public Lid getLid() {
         return lid;
     }
@@ -43,13 +37,21 @@ public class Account {
         this.lid = lid;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", gebruikersnaam='" + gebruikersnaam + '\'' +
-                ", wachtwoord='" + wachtwoord + '\'' +
-                ", lid=" + lid +
-                '}';
+    public String getWachtwoord() {
+        return wachtwoord;
     }
+
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
+    }
+
+    /*@JsonIgnore
+    public String getWachtwoordHash() {
+        return wachtwoordHash;
+    }
+    @JsonProperty
+    public void setWachtwoordHash(String wachtwoordHash) {
+        this.wachtwoordHash = passwordEncoder.encode(wachtwoordHash);
+    }*/
+
 }

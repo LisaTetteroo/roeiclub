@@ -1,9 +1,6 @@
 package nl.lisa.roeiclub.controller;
 
-import nl.lisa.roeiclub.domein.Account;
-import nl.lisa.roeiclub.domein.Boot;
-import nl.lisa.roeiclub.domein.Lid;
-import nl.lisa.roeiclub.domein.Palen;
+import nl.lisa.roeiclub.domein.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +21,9 @@ public class DummyService {
     @Autowired
     LidRepository lr;
 
+    @Autowired
+    ReserveringRepository rr;
+
     public void dummyDB(Lid lid, Account account, Palen palen, Boot boot) {
         lr.save(lid);
         ar.save(account);
@@ -37,5 +37,9 @@ public class DummyService {
 
     public void dummyPaal(Palen palen) {
         pr.save(palen);
+    }
+
+    public void dummyReservering(Reservering reservering) {
+        rr.save(reservering);
     }
 }

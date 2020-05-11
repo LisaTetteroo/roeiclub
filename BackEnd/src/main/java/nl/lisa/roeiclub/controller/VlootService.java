@@ -57,16 +57,18 @@ public class VlootService {
         return botenOverzicht;
     }
 
-    public void bootVerwijderen(Long id) {
+    public String bootVerwijderen(Long id) {
         System.out.println("in bootVerwijderen in BootService");
         br.deleteById(id);
+        return "Boot is verwijderd";
     }
 
-    public void beschikbareBoten () {
+    public Iterable<Boot> beschikbareBoten () {
         Iterable<Boot> botenOverzicht = br.findByBeschikbaarTrue();;
         for (Boot boot : botenOverzicht) {
             System.out.println(boot.getNaam() + " is beschikbaar");
         }
+        return botenOverzicht;
     }
 
     public String palenToevoegen(Palen p) {
@@ -80,12 +82,13 @@ public class VlootService {
         return palenOverzicht;
     }
 
-    public void palenVerwijderen(Long id) {
+    public String palenVerwijderen(Long id) {
         System.out.println("in palenVerwijderen in VlootService");
         pr.deleteById(id);
+        return "verwijderen succesvol";
     }
 
-    public void reserveringMaken(long bootId, long accountId, LocalDate datumReservering, LocalTime startTijd, LocalTime eindTijd) {
+    public String reserveringMaken(long bootId, long accountId, LocalDate datumReservering, LocalTime startTijd, LocalTime eindTijd) {
         System.out.println("in vlootservice in reserveringmaken");
         Boot b = null;
         Account a = null;
@@ -123,20 +126,25 @@ public class VlootService {
         }
 
         if (bootBezet == false) {
-            Reservering r = new Reservering(b , a , datumReservering, startTijd, eindTijd);
-            rr.save(r);
-            message = "reservering op datum gelukt";
-            try{
-                ms.sendReserveringMail(r);
-                System.out.println("Email verzenden succesvol.");
-            }catch(Exception e){
-                e.printStackTrace();
-                System.out.println("Email verzenden mislukt.");
-            }finally{
-                System.out.println("Klaar met reservering mail.");
+            if (b.isBeschikbaar() == false) {
+                message = "Deze boot is momenteel niet beschikbaar, je kan deze boot pas reserveren als deze weer beschikbaar is.";
+            } else {
+                Reservering r = new Reservering(b, a, datumReservering, startTijd, eindTijd);
+                rr.save(r);
+                message = "reservering op datum gelukt";
+                try {
+                    ms.sendReserveringMail(r);
+                    System.out.println("Email verzenden succesvol.");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Email verzenden mislukt.");
+                } finally {
+                    System.out.println("Klaar met reservering mail.");
+                }
             }
         }
         System.out.println(message);
+        return message;
     }
 
     public Iterable<Reservering> reserveringInzien(Long accountIdLong) {
@@ -154,7 +162,7 @@ public class VlootService {
 
     }
 
-    public void reserveringAnnuleren(Long id) {
+    public String reserveringAnnuleren(Long id) {
         System.out.println("in reserveringVerwijderen in BootService");
         Reservering r = rr.findById(id).get();;
         try {
@@ -167,6 +175,7 @@ public class VlootService {
             System.out.println("Klaar met reservering mail.");
         }
         rr.deleteById(id);
+        return "annulering verwerkt";
     }
 
     public List<Reservering> alleReserveringenInzien() {

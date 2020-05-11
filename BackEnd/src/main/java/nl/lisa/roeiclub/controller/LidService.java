@@ -60,6 +60,7 @@ public class LidService {
 
         if (ledenoverzichtOptional.isPresent()) {
             if ((lidHeeftAlAccount == false) && (gebruikersnaamBezet == false)) {
+
                 ar.save(account);
                 message = "account is succesvol aangemaakt";
             }

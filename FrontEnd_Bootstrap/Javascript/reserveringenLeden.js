@@ -62,6 +62,7 @@ function reserveringAnnuleren(reserveringId) {
         xhr.onreadystatechange = function() {
             console.log(this.responseText);
             if (this.readyState == 4) {
+                alert(this.responseText);
                 tabelReserveringenVullen();
             }
         }

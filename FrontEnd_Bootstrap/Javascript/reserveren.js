@@ -28,7 +28,7 @@ function tabelRerserverenVullen() {
             }
         }  
     }
-    xhr.open("GET", "http://localhost:8082/botenInzien", true);
+    xhr.open("GET", "http://localhost:8082/beschikbareBoten", true);
     xhr.send();
 }
 
@@ -53,6 +53,7 @@ function bootReserveren (bootId) {
 
     var xhr = new XMLHttpRequest;
     xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {alert(this.responseText)} 
     }
     xhr.open("post", "http://localhost:8082/reserveringMakenreq?bootIdParam="+bootId+"&accountIdParam="+accountId+"&datumReserveringParam="+datumReservering+"&startTijdParam="+startTijdReservering+"&eindTijdParam="+eindTijdReservering, true);
     xhr.send();
