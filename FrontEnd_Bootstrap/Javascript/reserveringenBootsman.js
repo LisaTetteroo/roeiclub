@@ -1,8 +1,4 @@
 function tabelReserveringenVullen () {
-    console.log(sessionStorage.getItem("accountId"))
-    
-    var accountId = sessionStorage.getItem("accountId");
-    console.log(accountId);
 
     var tabel = document.getElementById("tabelReserveringenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");
@@ -22,21 +18,22 @@ function tabelReserveringenVullen () {
                 var celId = rij.insertCell();
                 celId.innerHTML = reserveringen[i].boot.naam;
                 var celId = rij.insertCell();
-                celId.innerHTML = reserveringen[i].boot.loodsNummer;
-                var celId = rij.insertCell();
-                celId.innerHTML = reserveringen[i].boot.palen.id;
-                var celId = rij.insertCell();
-                celId.innerHTML = reserveringen[i].boot.palen.locatie;
-                var celId = rij.insertCell();
                 celId.innerHTML = reserveringen[i].startTijd;
                 var celId = rij.insertCell();
                 celId.innerHTML = reserveringen[i].eindTijd;
+                var celId = rij.insertCell();
+                if (reserveringen[i].account.lid.tussenvoegsel == null) {
+                    celId.innerHTML = reserveringen[i].account.lid.voornaam + " " + reserveringen[i].account.lid.achternaam
+                } else {
+                    celId.innerHTML = reserveringen[i].account.lid.voornaam + " " + reserveringen[i].account.lid.tussenvoegsel + " " + reserveringen[i].account.lid.achternaam
+                }
+                
                 var celAnnuleren = rij.insertCell();
                 createButtonAnnuleren(reserveringen[i].id, celAnnuleren);
             }
         }
     }
-    xhr.open("GET", "http://localhost:8082/reserveringInzienreq?accountIdString="+accountId, true)
+    xhr.open("GET", "http://localhost:8082/alleReserveringenInzien", true)
     xhr.send()
 }
 

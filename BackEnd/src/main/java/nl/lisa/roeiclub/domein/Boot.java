@@ -104,4 +104,18 @@ public class Boot {
     public void setPalen(Palen palen) {
         this.palen = palen;
     }
+
+    @Override
+    public String toString() {
+        return "Boot{" +
+                "id=" + id +
+                ", naam='" + naam + '\'' +
+                ", type='" + type + '\'' +
+                ", beschikbaar=" + beschikbaar +
+                ", gebruikType='" + gebruikType + '\'' +
+                ", loodsNummer=" + loodsNummer +
+                ", aanvullendeInformatie='" + aanvullendeInformatie + '\'' +
+                ", palen=" + palen +
+                '}';
+    }
 }

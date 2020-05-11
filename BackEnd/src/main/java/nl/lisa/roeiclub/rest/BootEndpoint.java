@@ -30,27 +30,24 @@ public class BootEndpoint {
     @DeleteMapping("/bootVerwijderen")
     public String bootVerwijderen (@RequestBody Boot boot) {
         System.out.println("in bootVerwijderen in bootEndpoint: " + boot.getNaam());
-        vs.bootVerwijderen(boot.getId());
-        return "boot verwijderd";
+        return vs.bootVerwijderen(boot.getId());
     }
 
     @DeleteMapping("/bootverwijderen/{bootId}")
     public String bootVerwijderenPath(@PathVariable long bootId) {
         System.out.println("verwijder path " +bootId);
-        vs.bootVerwijderen(bootId);
-        return "verwijderen geslaagd path";
+        return vs.bootVerwijderen(bootId);
     }
 
     @DeleteMapping("/bootVerwijderenreq")
     public String booterwijderenReq(@RequestParam long bootId) {
         System.out.println("verwijder req" + bootId);
-        vs.bootVerwijderen(bootId);
-        return "verwijderen geslaagd req";
+        return vs.bootVerwijderen(bootId);
     }
 
     @GetMapping("/beschikbareBoten")
-    public void beschikbareBoten () {
-        vs.beschikbareBoten();
+    public Iterable<Boot> beschikbareBoten () {
+        return vs.beschikbareBoten();
     }
 
     /*

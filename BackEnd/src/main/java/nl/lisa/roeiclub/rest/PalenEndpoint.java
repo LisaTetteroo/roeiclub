@@ -12,8 +12,7 @@ public class PalenEndpoint {
 
     @PostMapping("/palenToevoegen")
     public String palenToevoegen(@RequestBody Palen palen) {
-        String message = vs.palenToevoegen(palen);
-        return message;
+        return vs.palenToevoegen(palen);
     }
 
     @GetMapping("/palenInzien")
@@ -25,8 +24,8 @@ public class PalenEndpoint {
     @DeleteMapping("/palenVerwijderen/{palenId}")
     public String palenVerwijderen (@PathVariable long palenId){
         System.out.println(" palen verwijderen met path " + palenId);
-        vs.palenVerwijderen(palenId);
-        return "verwijderen succesvol";
+
+        return vs.palenVerwijderen(palenId);
     }
 
 }

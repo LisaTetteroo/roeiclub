@@ -108,6 +108,7 @@ function verwijderBoot (bootId, bootNaam) {
             xhr.onreadystatechange = function() {
                 console.log(this.responseText);
                 if (this.readyState == 4) {
+                    alert(this.responseText);
                     tabelBotenInzienVullen();
                 }
             }
