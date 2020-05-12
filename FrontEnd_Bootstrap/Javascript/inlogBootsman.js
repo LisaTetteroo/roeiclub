@@ -4,8 +4,8 @@ function inloggen () {
     var wachtwoord = document.getElementById("invoerWachtwoord").value;
     console.log(wachtwoord);
 
-    localStorage.setItem("gebruikersnaamLid", gebruikersnaam);
-    localStorage.setItem("wachtwoordLid",wachtwoord);
+    localStorage.setItem("gebruikersnaamBootsman", gebruikersnaam);
+    localStorage.setItem("wachtwoordBootsman",wachtwoord);
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -20,7 +20,7 @@ function inloggen () {
                     console.log(accountId);
                     sessionStorage.setItem("accountId", accountId);
                     console.log("terughalen: " + sessionStorage.getItem("accountId"));
-                    location.replace("./ledenPortaal.html")
+                    location.replace("./bootsmanPortaal.html")
                 }
             } else {
                 console.log("VERSTUREN IS NIET GELUKT!");
@@ -29,34 +29,7 @@ function inloggen () {
         }
     }
 
-    /*xhr.onreadystatechange = function(){
-
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-        
-            if (xhr.status === 'OK' || (xhr.status >= 200 && xhr.status < 400)) {
-        
-                var inhoudDB = JSON.parse(this.responseText);
-                console.log("VERSTUREN GELUKT!");
-        
-                if (inhoudDB.gebruikerType === "Medewerker") {
-                    console.log("Je bent een medewerker.");
-                    window.location.href = 'medewerker/dashboard.html';
-                } else if (inhoudDB.gebruikerType === "Admin") {
-                    console.log("Je bent een admin.");
-                    window.location.href = 'admin/dashboard.html';
-
-                } else {
-                    alert("who are you?");
-                }
-
-            } else {
-                console.log("VERSTUREN IS NIET GELUKT!");
-                alert("emailadres of wachtwoord is onjuist");
-            }
-        }
-    }*/
-
-    xhr.open("Get", "http://localhost:8082/inloggenLeden/" + gebruikersnaam + "-" + wachtwoord, true);
+    xhr.open("Get", "http://localhost:8082/inloggenBootsman/" + gebruikersnaam + "-" + wachtwoord, true);
     /*xhr.setRequestHeader("Authorization", "Basic " + btoa(gebruikersnaam + ":" + wachtwoord));*/
     xhr.send();
 }
