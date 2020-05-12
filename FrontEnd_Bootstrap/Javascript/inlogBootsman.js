@@ -4,8 +4,8 @@ function inloggen () {
     var wachtwoord = document.getElementById("invoerWachtwoord").value;
     console.log(wachtwoord);
 
-    localStorage.setItem("gebruikersnaamBootsman", gebruikersnaam);
-    localStorage.setItem("wachtwoordBootsman",wachtwoord);
+    localStorage.setItem("gebruikersnaam", gebruikersnaam);
+    localStorage.setItem("wachtwoord",wachtwoord);
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -16,10 +16,6 @@ function inloggen () {
                 if (account.gebruikersnaam === "fout") {
                     alert("gebruikersnaam of wachtwoord onjuist")
                 } else {
-                    var accountId = account.id;
-                    console.log(accountId);
-                    sessionStorage.setItem("accountId", accountId);
-                    console.log("terughalen: " + sessionStorage.getItem("accountId"));
                     location.replace("./bootsmanPortaal.html")
                 }
             } else {
@@ -30,8 +26,6 @@ function inloggen () {
     }
 
     xhr.open("Get", "http://localhost:8082/inloggenBootsman/" + gebruikersnaam + "-" + wachtwoord, true);
-    /*xhr.setRequestHeader("Authorization", "Basic " + btoa(gebruikersnaam + ":" + wachtwoord));*/
     xhr.send();
 }
 
-/*"http://localhost:8082/accountBijGebruikersnaamOpvragen/"+gebruikersnaam*/

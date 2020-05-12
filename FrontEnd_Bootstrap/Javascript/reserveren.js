@@ -44,7 +44,7 @@ function createButtonReserveer (id, cel) {
 }
 
 function bootReserveren (bootId) {
-    var accountId = sessionStorage.getItem("accountId");
+    var accountId = localStorage.getItem("accountId");
     var datumReservering = document.getElementById("datumReservering").value;
     var startTijdReservering = document.getElementById("startTijdReservering").value;
     var eindTijdReservering = document.getElementById("eindTijdReservering").value;

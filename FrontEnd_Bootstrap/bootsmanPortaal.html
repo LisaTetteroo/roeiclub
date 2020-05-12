@@ -5,10 +5,12 @@
         <title> RoeiClub BotenOverzicht</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link  rel="stylesheet" href="./style.css" type="text/css">        
+        <link  rel="stylesheet" href="./style.css" type="text/css">   
+        <script type="text/javascript" src="./Javascript/bootsmanPortaal.js"></script>
+        <script type="text/javascript" src="./Javascript/storageClear.js"></script>          
     </head>
 
-    <body>
+    <body onload="inlogcheck()">
         <header class="container-fluid bg-paars text-center">
             <!--<img src="https://img.icons8.com/ios/50/000000/rowing-2.png" class="mb4 d-inline-block" >-->
             <h1 class="text-white">Vloot systeem</h1>
@@ -25,7 +27,7 @@
                 <input id="button#" class="btn bg-paars text-white m-2"  type="button" value="Reserveringen"> 
             </a> <br>
             <a href="home.html">
-                <input id="homeButton" class="btn bg-paars text-white m-2"  type="button" value="Home">
+                <input id="homeButton" class="btn bg-paars text-white m-2"  type="button" value="Home" onclick="clearStorage()">
             </a>
         </main>
         

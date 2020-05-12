@@ -4,8 +4,8 @@ function inloggen () {
     var wachtwoord = document.getElementById("invoerWachtwoord").value;
     console.log(wachtwoord);
 
-    localStorage.setItem("gebruikersnaamLid", gebruikersnaam);
-    localStorage.setItem("wachtwoordLid",wachtwoord);
+    localStorage.setItem("gebruikersnaam", gebruikersnaam);
+    localStorage.setItem("wachtwoord",wachtwoord);
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -18,8 +18,8 @@ function inloggen () {
                 } else {
                     var accountId = account.id;
                     console.log(accountId);
-                    sessionStorage.setItem("accountId", accountId);
-                    console.log("terughalen: " + sessionStorage.getItem("accountId"));
+                    localStorage.setItem("accountId", accountId);
+                    console.log("terughalen: " + localStorage.getItem("accountId"));
                     location.replace("./ledenPortaal.html")
                 }
             } else {
