@@ -1,5 +1,9 @@
 package nl.lisa.roeiclub.domein;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +14,8 @@ public class Account {
     private long id;
 
     private String gebruikersnaam;
-    private String wachtwoord;
+    private String wachtwoordHash;
+    private String rol;
 
     //private static PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
@@ -19,6 +24,10 @@ public class Account {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getGebruikersnaam() {
@@ -37,21 +46,28 @@ public class Account {
         this.lid = lid;
     }
 
-    public String getWachtwoord() {
-        return wachtwoord;
+    /*public String getWachtwoord() {
+        return wachtwoordHash;
     }
 
     public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
-    }
+        this.wachtwoordHash = wachtwoord;
+    }*/
 
-    /*@JsonIgnore
+    @JsonIgnore
     public String getWachtwoordHash() {
         return wachtwoordHash;
     }
     @JsonProperty
     public void setWachtwoordHash(String wachtwoordHash) {
-        this.wachtwoordHash = passwordEncoder.encode(wachtwoordHash);
-    }*/
+        this.wachtwoordHash = wachtwoordHash;
+    }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }

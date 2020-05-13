@@ -11,6 +11,6 @@ import java.util.Optional;
 @Component
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
-    List<Account> findByGebruikersnaam(String gebruikersnaam);
+    Optional<Account> findByGebruikersnaam(String gebruikersnaam);
     Optional<Account> findByLid(Lid lid);
 }

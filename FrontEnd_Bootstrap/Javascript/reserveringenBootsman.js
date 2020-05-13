@@ -1,4 +1,8 @@
 function tabelReserveringenVullen () {
+    if (localStorage.getItem("gebruikersnaam") !== "admin") {
+        alert("niet proberen een omweg te nemen, eerst inloggen")
+        location.replace("./inlogBootsman.html")
+    }
 
     var tabel = document.getElementById("tabelReserveringenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");

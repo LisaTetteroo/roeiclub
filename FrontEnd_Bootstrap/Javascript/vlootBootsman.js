@@ -28,6 +28,11 @@ function bootToevoegen(){
 }
 
 function tabelBotenInzienVullen() {
+    if (localStorage.getItem("gebruikersnaam") !== "admin") {
+        alert("niet proberen een omweg te nemen, eerst inloggen")
+        location.replace("./inlogBootsman.html")
+    }
+
     //alert("test button boten inzien")
     var tabel = document.getElementById("tabelBotenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");

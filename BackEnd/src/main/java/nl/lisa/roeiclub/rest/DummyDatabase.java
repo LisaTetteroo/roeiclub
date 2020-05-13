@@ -30,7 +30,7 @@ public class DummyDatabase {
         Account account = new Account();
         account.setLid(lid);
         account.setGebruikersnaam("test");
-        account.setWachtwoord("test");
+        account.setWachtwoordHash("test");
         Palen palen = new Palen();
         palen.setSoort("Boord bigblade");
         palen.setToekenning("EJD");
@@ -52,7 +52,7 @@ public class DummyDatabase {
         Account account2 = new Account();
         account2.setLid(lid2);
         account2.setGebruikersnaam("test2");
-        account2.setWachtwoord("test2");
+        account2.setWachtwoordHash("test2");
         Palen palen2 = new Palen();
         palen2.setSoort("scull smoothie");
         palen2.setAantal(2);
@@ -75,7 +75,7 @@ public class DummyDatabase {
         Account account3 = new Account();
         account3.setLid(lid3);
         account3.setGebruikersnaam("test3");
-        account.setWachtwoord("test3");
+        account3.setWachtwoordHash("test3");
         Palen palen3 = new Palen();
         palen3.setSoort("boord tulp");
         palen3.setAantal(4);
@@ -136,5 +136,12 @@ public class DummyDatabase {
         r5.setEindTijd(LocalTime.parse("14:00"));
         ds.dummyReservering(r5);
 
+        Admin bootsman = new Admin();
+        bootsman.setGebruikersnaam("admin");
+        bootsman.setWachtwoordHash("admin");
+        ds.bootsmanAccount(bootsman);
+
+        /*Account fouteGegevens = new Account();
+        account.setGebruikersnaam("fout");*/
     }
 }

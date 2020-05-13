@@ -1,7 +1,7 @@
 function tabelReserveringenVullen () {
-    console.log(sessionStorage.getItem("accountId"))
+    console.log(localStorage.getItem("accountId"))
     
-    var accountId = sessionStorage.getItem("accountId");
+    var accountId = localStorage.getItem("accountId");
     console.log(accountId);
 
     var tabel = document.getElementById("tabelReserveringenInzien");      

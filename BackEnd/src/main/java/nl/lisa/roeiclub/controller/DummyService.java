@@ -24,6 +24,9 @@ public class DummyService {
     @Autowired
     ReserveringRepository rr;
 
+    @Autowired
+    AdminRepository adminr;
+
     public void dummyDB(Lid lid, Account account, Palen palen, Boot boot) {
         lr.save(lid);
         ar.save(account);
@@ -41,5 +44,9 @@ public class DummyService {
 
     public void dummyReservering(Reservering reservering) {
         rr.save(reservering);
+    }
+
+    public void bootsmanAccount(Admin bootsman) {
+        adminr.save(bootsman);
     }
 }

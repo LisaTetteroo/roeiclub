@@ -26,6 +26,10 @@ function palenToevoegen() {
 
 function tabelPalenVullen () {
     //alert("test button boten inzien")
+    if (localStorage.getItem("gebruikersnaam") !== "admin") {
+        alert("niet proberen een omweg te nemen, eerst inloggen")
+        location.replace("./inlogBootsman.html")
+    }
 
     var tabel = document.getElementById("tabelPalenInzien");      
     var rijenAanwezig = document.getElementsByTagName("tr");
